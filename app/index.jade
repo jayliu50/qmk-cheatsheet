@@ -1,0 +1,16 @@
+doctype html
+html(lang="en")
+  head
+    title Start your prototyping
+    script(src='/scripts/vendor.js')
+    script(src='/scripts/app.js')
+    link(rel='stylesheet', href='/styles/app.css')
+
+  body(ng-app="prototypeAngularApp")
+    h1 Start your prototyping!
+    div(ng-controller="MainCtrl")
+      p Here are a list of things installed
+      ul
+        li(ng-repeat='item in awesomeThings')
+          {{ item }}
+

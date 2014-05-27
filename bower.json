@@ -1,0 +1,33 @@
+{
+  "name": "angular-prototype",
+  "version": "0.0.0",
+  "authors": [
+    "Jay Liu <jayliu50@gmail.com>"
+  ],
+  "description": "Prototype seed for Angular using Coffeescript, Jade, and SASS",
+  "keywords": [
+    "angular",
+    "prototype",
+    "bootstrap",
+    "broccoli",
+    "font-awesome",
+    "lodash",
+    "jade",
+    "coffeescript"
+  ],
+  "license": "MIT",
+  "homepage": "http://endeavors.cyanosphere.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.3.0-beta.10",
+    "lodash": "~2.4.1",
+    "jquery": "~2.1.1"
+  }
+}
