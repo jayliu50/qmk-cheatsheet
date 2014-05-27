@@ -14,8 +14,9 @@ This framework uses cool stuff such as
 ## Getting Started ##
 
 ### Requires the following to be installed ###
-[Node.js](http://nodejs.org/)
-[Ruby](http://rubyinstaller.org/downloads/)
+So go and install these for your operating system
+- [Node.js](http://nodejs.org/)
+- [Ruby](http://rubyinstaller.org/downloads/)
 
 Run this
 
@@ -25,14 +26,14 @@ Run this
 [sudo] gem install sass
 ```
 
-Run after getting source code
+Run after getting source code, in the source root directory
 
 ```
 npm install
 bower install
 ```
 
-Get the server running
+<del>Get the server running</del>
 *(not working right now :( )*
 
 ```
@@ -47,5 +48,6 @@ broccoli build [your-target-name-here]
 
 ## Known Issues ##
 
+- Not sure how to get Broccoli to serve!
 - Broccoli is configured to only process CoffeeScript (not Javascript), Jade (not HTML), and SCSS
 - Font-awesome has been "hard-copied", because broccoli-bower doesn't know how to deal with the bower-installed font-awesome yet.
