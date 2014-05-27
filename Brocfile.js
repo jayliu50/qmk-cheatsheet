@@ -30,7 +30,9 @@ var styles = pickFiles('', {
 })
 
 styles = compass(styles, {
-  outputStyle: 'expanded'
+  outputStyle: 'expanded',
+  // todo: fork a change in broccoli-compass that lets you pass in an array. Modify generateArgs(options).
+  require: 'modular-scale --require singularitygs'
 })
 
 styles = concatenate(styles, {

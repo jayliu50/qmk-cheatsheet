@@ -1,0 +1,12 @@
+@for $i from 1 through 6 {
+    $color: darken(#fff, 15% * $i);
+
+    .gray-#{$i} {
+        color: $color;
+    }
+
+    .bg-gray-#{$i} {
+        background-color: $color;
+    }
+}
+

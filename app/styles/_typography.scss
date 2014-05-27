@@ -1,0 +1,13 @@
+// todo: download and take offline
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700");
+
+body {
+    font-family: "Open Sans", sans-serif;
+}
+
+@for $i from 1 through 6 {
+    h#{7 - $i} {
+        font-size: ms($i, 1em, $golden $augmented-fourth);
+        line-height: 1.2em;
+    }
+}
