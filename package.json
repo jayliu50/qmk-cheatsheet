@@ -18,6 +18,7 @@
     "broccoli-jade": "~0.2.0",
     "broccoli-file-remover": "~0.2.0",
     "broccoli-concat": "0.0.6",
-    "broccoli-compass": "0.0.3"
+    "broccoli-compass": "0.0.3",
+    "http-server": "^0.6.1"
   }
 }

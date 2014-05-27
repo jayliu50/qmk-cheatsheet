@@ -16,14 +16,13 @@ This framework uses cool stuff such as
 ### Requires the following to be installed ###
 So go and install these for your operating system
 - [Node.js](http://nodejs.org/)
-- [Ruby](http://rubyinstaller.org/downloads/)
+- [Ruby](http://rubyinstaller.org/downloads/) with [Bundler](http://bundler.io/)
 
 Run this
 
 ```
-[sudo] npm install -g broccoli-cli bower
-[sudo] gem install compass
-[sudo] gem install sass
+npm install -g broccoli-cli bower
+bundle install
 ```
 
 Run after getting source code, in the source root directory
@@ -33,14 +32,30 @@ npm install
 bower install
 ```
 
-<del>Get the server running</del>
+###<del>Get the server running</del>###
 *(not working right now :( )*
 
 ```
 broccoli serve
 ```
 
-Build the assets only
+### Get the server running (Workaround) ###
+```
+# in Terminal 1
+npm install -g http-server
+cd [your-target-name-here]
+http-server # go and check http://0.0.0.0:8080
+```
+
+Incremental: 
+
+```
+# in Terminal 2
+rm -r [your-target-name-here] # if already built
+broccoli build [your-target-name-here]
+```
+
+### Build the assets only ###
 
 ```
 broccoli build [your-target-name-here]
