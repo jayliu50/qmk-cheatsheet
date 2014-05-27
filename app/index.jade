@@ -9,28 +9,38 @@ html(lang="en")
   body(ng-app="prototypeAngularApp")
     main
       h1 Start your prototyping!
-      div(ng-controller="MainCtrl")
-        p Here are a list of things installed
+      h3 Here is a collection of things installed
+      .feature(ng-controller="MainCtrl")
+        h3 Angular JS + Lodash 
         ul
           li(ng-repeat='item in awesomeThings')
             {{ item }}
 
-      div
+      .feature
+        h3 Modular Scale Typography
         h1.gray-3 Header 1
         h2.gray-3 Header 2
         h3.gray-3 Header 3
         h4.gray-3 Header 4
         h5.gray-3 Header 5
         h6.gray-3 Header 6
-        p
+        p p
 
-      div
+      .feature
+        h3 Font-awesome
         h1.fa.fa-magic
 
-      div
-        .bg-gray-1.panel
-        .bg-gray-2.panel
-        .bg-gray-3.panel
-        .bg-gray-4.panel
-        .bg-gray-5.panel
-        .bg-gray-6.panel
+      .feature
+        h3 Classes for shades of gray
+        .bg-gray-1.gray-6.panel .[bg-]gray-1
+        .bg-gray-2.gray-5.panel .[bg-]gray-2
+        .bg-gray-3.gray-4.panel .[bg-]gray-3
+        .bg-gray-4.gray-3.panel .[bg-]gray-4
+        .bg-gray-5.gray-2.panel .[bg-]gray-5
+        .bg-gray-6.gray-1.panel .[bg-]gray-6
+
+      .feature
+        h3 Singularity GS
+        .feature 1
+        .feature 2
+        .feature 3

@@ -1,3 +1,5 @@
+$color-gray-dark: darken(#fff, 15% * 3);
+
 @for $i from 1 through 6 {
     $color: darken(#fff, 15% * $i);
 

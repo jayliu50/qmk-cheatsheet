@@ -1,6 +1,13 @@
-$grids: 1 2 1 1;
-$gutters: 20px;
+@include add-grid(12);
+@include add-gutter(1/3);
 
-main {
-    @include background-grid;
+* {
+    @include box-sizing('border-box');
+}
+
+// display grid
+@include sgs-change("debug", true);
+
+.feature {
+    @include grid-span(3, 3);
 }

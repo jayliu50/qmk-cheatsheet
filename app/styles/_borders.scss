@@ -3,3 +3,10 @@
     margin: 10px;
     padding: 30px 40px;
 }
+
+.feature {
+    @extend .panel;
+    border-color: $color-gray-dark;
+    border-style: solid;
+    border-width: 1px;
+}

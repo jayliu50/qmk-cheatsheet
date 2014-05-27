@@ -32,14 +32,14 @@ npm install
 bower install
 ```
 
-###<del>Get the server running</del>###
-*(not working right now :( )*
+###Get the server running###
+*Will update your page once, but doesn't refresh when things change. Hit `Ctrl+C` to stop and rerun the command to continue *
 
 ```
 broccoli serve
 ```
 
-### Get the server running (Workaround) ###
+### Get the server running (Another clunky workaround) ###
 ```
 # in Terminal 1
 npm install -g http-server
