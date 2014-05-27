@@ -8,6 +8,15 @@
 // display grid
 @include sgs-change("debug", true);
 
+main {
+    @include grid-span(10, 2);
+    @include clearfix;
+}
+
 .feature {
-    @include grid-span(3, 3);
+    @include grid-span(4, 3);
+
+    h3 {
+        margin-bottom: 20px;
+    }
 }

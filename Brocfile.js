@@ -4,7 +4,10 @@ var compass = require('broccoli-compass')
 var compileJade = require('broccoli-jade')
 var pickFiles = require('broccoli-static-compiler')
 var mergeTrees = require('broccoli-merge-trees')
+// todo: remove broccoli-bower. it's of the devil
+// todo: use bower for font-awesome and angular-placeholders
 var findBowerTrees = require('broccoli-bower')
+
 var removeTrees = require('broccoli-file-remover')
 var concatenate = require('broccoli-concat')
 var uglify = require('broccoli-uglify-js');
@@ -15,7 +18,7 @@ removeTrees('dist', {
 
 var coffee = pickFiles('', {
   srcDir: 'app/scripts',
-  files: ['**/*.coffee'],
+  files: ['**/*.coffee', '**/*.js'],
   destDir: 'scripts'
 })
 

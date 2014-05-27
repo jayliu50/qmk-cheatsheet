@@ -3,11 +3,23 @@
 
 body {
     font-family: "Open Sans", sans-serif;
+    color: $color-gray-dark;
 }
 
 @for $i from 1 through 6 {
     h#{7 - $i} {
         font-size: ms($i, 1em, $golden $augmented-fourth);
         line-height: 1.2em;
+
+        a {
+            text-decoration: none;
+        }
+    }
+}
+
+a {
+    color: darken($color-gray-dark, 10%);
+    &:hover {
+        color: darken($color-gray-dark, 30%);
     }
 }

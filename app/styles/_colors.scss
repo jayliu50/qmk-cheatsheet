@@ -1,4 +1,5 @@
-$color-gray-dark: darken(#fff, 15% * 3);
+$color-gray: darken(#fff, 15% * 3);
+$color-gray-dark: darken(#fff, 15% * 4);
 
 @for $i from 1 through 6 {
     $color: darken(#fff, 15% * $i);

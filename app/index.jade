@@ -9,7 +9,7 @@ html(lang="en")
   body(ng-app="prototypeAngularApp")
     main
       h1 Start your prototyping!
-      h3 Here is a collection of things installed
+      h4.gray-1 Here is a collection of things installed
       .feature(ng-controller="MainCtrl")
         h3 Angular JS + Lodash 
         ul
@@ -17,7 +17,9 @@ html(lang="en")
             {{ item }}
 
       .feature
-        h3 Modular Scale Typography
+        h3 
+          a(href="http://modularscale.com/", target="_blank") Modular Scale Typography
+        hr
         h1.gray-3 Header 1
         h2.gray-3 Header 2
         h3.gray-3 Header 3
@@ -27,8 +29,11 @@ html(lang="en")
         p p
 
       .feature
-        h3 Font-awesome
+        h3 
+          a(href="http://fontawesome.io/icons/", target="_blank") Font-awesome
         h1.fa.fa-magic
+        h1.fa.fa-bomb
+        h1.fa.fa-check
 
       .feature
         h3 Classes for shades of gray
@@ -40,7 +45,16 @@ html(lang="en")
         .bg-gray-6.gray-1.panel .[bg-]gray-6
 
       .feature
-        h3 Singularity GS
+        h3 
+          a(href="https://github.com/Team-Sass/Singularity/wiki", target="_blank") Singularity GS
         .feature 1
         .feature 2
         .feature 3
+
+      .feature
+        h3
+          | Prototyping with 
+          a(href="http://joshdmiller.github.io/angular-placeholders/", target="_blank") angular-placeholders
+        img(ph-img='150x150')
+        p(ph-txt='1p3s')
+
