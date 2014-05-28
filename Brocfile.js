@@ -16,8 +16,10 @@ removeTrees('dist', {
   files: '**.*'
 })
 
-var coffee = pickFiles('', {
-  srcDir: 'app/scripts',
+var app = 'app'
+
+var coffee = pickFiles(app, {
+  srcDir: 'scripts',
   files: ['**/*.coffee', '**/*.js'],
   destDir: 'scripts'
 })
@@ -26,8 +28,8 @@ var scripts = filterCoffeeScript(coffee, {
   bare: true
 })
 
-var styles = pickFiles('', {
-  srcDir: 'app/styles',
+var styles = pickFiles(app, {
+  srcDir: 'styles',
   files: ['**/*.scss'],
   destDir: 'styles'
 })
@@ -43,8 +45,8 @@ styles = concatenate(styles, {
   outputFile: '/styles/app.css'
 })
 
-styles_vendor = pickFiles('', {
-  srcDir: 'app/styles',
+styles_vendor = pickFiles(app, {
+  srcDir: 'styles',
   files: ['**/*.css'],
   destDir: 'styles'
 })
@@ -54,14 +56,14 @@ styles = mergeTrees([
   styles
 ])
 
-var views = pickFiles('', {
-  srcDir: 'app',
+var views = pickFiles(app, {
+  srcDir: '/',
   files: ['**/*.jade'],
   destDir: ''
 })
 
-var fonts = pickFiles('', {
-  srcDir: 'app/fonts',
+var fonts = pickFiles(app, {
+  srcDir: 'fonts',
   destDir: 'fonts'
 })
 
