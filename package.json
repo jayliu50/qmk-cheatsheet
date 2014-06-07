@@ -6,19 +6,18 @@
   "author": "Jay Liu <jayliu50@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "bower": "^1.2.8",
-    "broccoli": "^0.10.0",
-    "broccoli-static-compiler": "^0.1.4",
+    "broccoli": "~0.12.2",
+    "broccoli-static-compiler": "~0.1.4",
     "broccoli-uglify-js": "~0.1.3",
-    "broccoli-template": "^0.1.0",
-    "broccoli-coffee": "^0.1.0",
-    "broccoli-sass": "^0.1.0",
-    "broccoli-merge-trees": "^0.1.3",
-    "broccoli-bower": "^0.2.0",
+    "broccoli-template": "~0.1.1",
+    "broccoli-coffee": "~0.1.0",
+    "broccoli-sass": "~0.1.4",
+    "broccoli-merge-trees": "~0.1.4",
+    "broccoli-bower": "~0.2.1",
     "broccoli-jade": "~0.2.0",
     "broccoli-file-remover": "~0.2.0",
     "broccoli-concat": "0.0.6",
-    "broccoli-compass": "0.0.3",
+    "broccoli-compass": "0.0.5",
     "http-server": "^0.6.1"
   }
 }
