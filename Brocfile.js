@@ -4,13 +4,11 @@ var compass = require('broccoli-compass')
 var compileJade = require('broccoli-jade')
 var pickFiles = require('broccoli-static-compiler')
 var mergeTrees = require('broccoli-merge-trees')
-// todo: remove broccoli-bower. it's of the devil
-// todo: use bower for font-awesome and angular-placeholders
+// todo: add font-awesome when either broccoli-bower learns to use globs or font-awesome stops putting a glob in as its main file
 var findBowerTrees = require('broccoli-bower')
-
 var removeTrees = require('broccoli-file-remover')
 var concatenate = require('broccoli-concat')
-var uglify = require('broccoli-uglify-js');
+var uglify = require('broccoli-uglify-js')
 
 removeTrees('dist', {
   files: '**.*'
@@ -19,13 +17,18 @@ removeTrees('dist', {
 var app = 'app'
 
 var coffee = pickFiles(app, {
-  srcDir: 'scripts',
-  files: ['**/*.coffee', '**/*.js'],
-  destDir: 'scripts'
+  srcDir: '',
+  files: ['**/*.coffee'],
+  destDir: ''
 })
 
 var scripts = filterCoffeeScript(coffee, {
   bare: true
+})
+
+scripts = concatenate(scripts, {
+  inputFiles: ['**/*.js'],
+  outputFile: '/scripts/app.js'
 })
 
 var styles = pickFiles(app, {
@@ -59,7 +62,7 @@ styles = mergeTrees([
 var views = pickFiles(app, {
   srcDir: '/',
   files: ['**/*.jade'],
-  destDir: ''
+  destDir: '/'
 })
 
 var fonts = pickFiles(app, {
@@ -71,21 +74,23 @@ var appCss = styles
 
 var bower = mergeTrees(findBowerTrees())
 
-bower = concatenate(bower, {
-  inputFiles: ['**/*.js'],
-  outputFile: '/scripts/vendor.js'
+bower = pickFiles(bower, {
+  srcDir: '/',
+  destDir: 'bower'
 })
 
-bower = uglify(bower, {
-  mangle: false
-})
+// var vendor = pickFiles(app, {
+//   srcDir: '/scripts/vendor',
+//   files: ['**/*.js'],
+//   destDir: 'scripts/vendor'
+// })
 
-scripts = concatenate(scripts, {
-  inputFiles: ['**/*.js'],
-  outputFile: '/scripts/app.js'
-})
+// bower = uglify(bower, {
+//   mangle: false
+// })
 
-var appJs = mergeTrees([scripts, bower])
+
+var appJs = mergeTrees([scripts, bower]) // todo: merge vendor stuff into appJs if applicable
 
 var appHtml = compileJade(views)
 
