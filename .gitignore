@@ -3,5 +3,5 @@ dist/*
 .tmp/
 tmp/*
 node_modules/*
-bower_components/*
+app/bower_components/*
 .sass-cache/*
