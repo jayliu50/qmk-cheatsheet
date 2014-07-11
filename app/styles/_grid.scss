@@ -1,22 +1,39 @@
-@include add-grid(12);
+$small: 40em;
+$medium: 60em;
+$large: 80em;
+$xlarge: 100em;
+
+
+@include add-grid(4 at $small);
+@include add-grid(6 at $medium);
+@include add-grid(12 at $large);
 @include add-gutter(1/3);
+
+@include add-gutter-style("split");
 
 * {
     @include box-sizing('border-box');
 }
 
-// display grid
-@include sgs-change("debug", true);
 
 main {
-    @include grid-span(10, 2);
+    @include breakpoint($small) {
+        @include grid-span(4, 1);
+    }
+    @include breakpoint($small $medium) {
+        @include grid-span(4, 1);
+    }
+    @include breakpoint($medium $large) {
+        @include grid-span(10, 1);
+    }
+
     @include clearfix;
 }
 
 .feature {
-    @include grid-span(4, 3);
 
-    h3 {
-        margin-bottom: 20px;
+    .title {
+        @extend h5;
+        margin-bottom: 1em;
     }
 }

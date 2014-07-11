@@ -5,8 +5,6 @@
 }
 
 .feature {
+    background: lighten($color-gray-light, 20%);
     @extend .panel;
-    border-color: $color-gray-dark;
-    border-style: solid;
-    border-width: 1px;
 }

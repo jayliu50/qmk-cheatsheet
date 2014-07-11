@@ -6,16 +6,41 @@ body {
     color: $color-gray-dark;
 }
 
-@for $i from 1 through 6 {
-    h#{7 - $i} {
-        font-size: ms($i, 1em, $golden $augmented-fourth);
-        line-height: 1.2em;
+@mixin headers($base) {
+    p {
+        font-size: $base;
+    }
+    @for $i from 0 through 5 {
+        h#{6 - $i} {
+            $size: ms($i + 1, $golden);
 
-        a {
-            text-decoration: none;
+            font-size: $size;
+            line-height: $size * 1.2;
+            &::after {
+                content: ' #{$size}px';
+            }
+
+            a {
+                text-decoration: none;
+            }
         }
     }
 }
+
+@include headers(12px);
+
+
+// @include breakpoint($medium) {
+//     @include headers(12px);
+// }
+
+// @include breakpoint($medium $large) {
+//     @include headers(14px);
+// }
+
+// @include breakpoint($large $xlarge) {
+//     @include headers(16px);
+// }
 
 a {
     color: darken($color-gray-dark, 10%);
