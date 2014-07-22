@@ -1,15 +1,13 @@
 // todo: download and take offline
 @import url("http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700");
 
-body {
+$base: 1em;
+
+%font {
     font-family: "Open Sans", sans-serif;
-    color: $color-gray-dark;
 }
 
 @mixin headers($base) {
-    p {
-        font-size: $base;
-    }
     @for $i from 0 through 5 {
         h#{6 - $i} {
             $size: ms($i + 1, $golden $fourth);
@@ -24,7 +22,7 @@ body {
     }
 }
 
-@include headers(1em);
+@include headers($base);
 
 
 // @include breakpoint($medium) {
@@ -38,10 +36,3 @@ body {
 // @include breakpoint($large $xlarge) {
 //     @include headers(16px);
 // }
-
-a {
-    color: darken($color-gray-dark, 10%);
-    &:hover {
-        color: darken($color-gray-dark, 30%);
-    }
-}

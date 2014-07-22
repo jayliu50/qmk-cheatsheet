@@ -8,34 +8,3 @@ $susy: (
     gutters: 1 / 4,
     global-box-sizing: 'border-box',
 );
-
-
-main {
-    @include breakpoint($small) {
-        @include container($small);
-    }
-    @include breakpoint($small $medium) {
-        @include container($small);
-    }
-    @include breakpoint($medium $large) {
-        @include container($medium);
-    }
-
-    @include clearfix;
-}
-
-.feature {
-    @include container($large);
-    .title {
-        @extend h5;
-        margin-bottom: 1em;
-    }
-}
-
-.feature-grid {
-    @include clearfix;
-    @include container(90%);
-    li {
-        @include gallery(4 of 12);
-    }
-}
