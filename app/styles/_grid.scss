@@ -3,37 +3,39 @@ $medium: 60em;
 $large: 80em;
 $xlarge: 100em;
 
-
-@include add-grid(4 at $small);
-@include add-grid(6 at $medium);
-@include add-grid(12 at $large);
-@include add-gutter(1/3);
-
-@include add-gutter-style("split");
-
-* {
-    @include box-sizing('border-box');
-}
+$susy: (
+    columns: 12,
+    gutters: 1 / 4,
+    global-box-sizing: 'border-box',
+);
 
 
 main {
     @include breakpoint($small) {
-        @include grid-span(4, 1);
+        @include container($small);
     }
     @include breakpoint($small $medium) {
-        @include grid-span(4, 1);
+        @include container($small);
     }
     @include breakpoint($medium $large) {
-        @include grid-span(10, 1);
+        @include container($medium);
     }
 
     @include clearfix;
 }
 
 .feature {
-
+    @include container($large);
     .title {
         @extend h5;
         margin-bottom: 1em;
+    }
+}
+
+.feature-grid {
+    @include clearfix;
+    @include container(90%);
+    li {
+        @include gallery(4 of 12);
     }
 }

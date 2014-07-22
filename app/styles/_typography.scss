@@ -12,13 +12,10 @@ body {
     }
     @for $i from 0 through 5 {
         h#{6 - $i} {
-            $size: ms($i + 1, $golden);
+            $size: ms($i + 1, $golden $fourth);
 
-            font-size: $size;
-            line-height: $size * 1.2;
-            &::after {
-                content: ' #{$size}px';
-            }
+            font-size: #{$size}em;
+            line-height: 1.2;
 
             a {
                 text-decoration: none;
@@ -27,7 +24,7 @@ body {
     }
 }
 
-@include headers(12px);
+@include headers(1em);
 
 
 // @include breakpoint($medium) {
