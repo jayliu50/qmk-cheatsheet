@@ -1,0 +1,30 @@
+doctype html
+html(lang="en")
+  head
+    title Start your prototyping
+    script(src='/bower/jquery.js')
+    script(src='/bower/lodash.compat.js')
+    script(src='/bower/angular.js')
+    script(src='/bower/angular-ui-router.js')
+    script(src='/bower/angular-placeholders.js')
+    script(src='/scripts/app.js')
+    link(rel='stylesheet', href='/styles/app.css')
+
+  body(ng-app="prototypeAngularApp")
+    main
+      h1.title Style
+      h3.subheader My Tagline
+      blockquote(ph-txt='1s')
+      h2(ph-txt='1s')
+        p.text(ph-txt='3s')
+      
+      h2(ph-txt='1p1s')
+      .pair-right
+        img(ph-img='200x150')
+        p.text(ph-txt='3s')
+      .pair-left
+        img(ph-img='200x150')
+        p.text(ph-txt='3s')
+      .pair-right
+        img(ph-img='200x150')
+        p.text(ph-txt='3s')

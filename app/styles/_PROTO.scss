@@ -1,0 +1,81 @@
+
+//- just throw it all in. it's a prototype.
+
+body {
+	@extend %font;
+	color: $color-gray-dark;
+}
+
+main {
+	@include breakpoint($small) {
+		@include container($small);
+	}
+	@include breakpoint($small $medium) {
+		@include container($small);
+	}
+	@include breakpoint($medium $large) {
+		@include container($medium);
+	}
+
+	@include clearfix;
+}
+
+.panel {
+	border-radius: 5px;
+	margin: 10px;
+	padding: 30px 40px;
+}
+
+.feature {
+	@extend .panel;
+	@include container($large);
+
+	background: lighten($color-gray-light, 20%);
+	.title {
+		@extend h5;
+		margin-bottom: 1em;
+	}
+}
+
+.feature-grid {
+	@include clearfix;
+	@include container(90%);
+	li {
+		@include gallery(4 of 12);
+	}
+}
+
+.pair-right {
+	@include clearfix;
+	@include container();
+	img {
+		@include span(4 of 12);
+	}
+	.text {
+		@include span(8 at 5 of 12);
+	}
+}
+
+.pair-left {
+	@include clearfix;
+	@include container();
+	img {
+		@include span(4 at 9 of 12);
+	}
+	.text {
+		@include span(8 of 12);
+	}
+}
+
+a {
+	color: darken($color-gray-dark, 10%);
+	&:hover {
+		color: darken($color-gray-dark, 30%);
+	}
+}
+
+p {
+	font-size: $base;
+	line-height: 1.2 * $base;
+	padding-bottom: $base / 2;
+}
