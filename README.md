@@ -24,7 +24,7 @@ This prototyping framework draws from the following knowledge (roughly in order 
 - [Recommended] How to read and write [Sass (SCSS)](http://sass-lang.com/guide)
 - [Recommended] How to read and write [CoffeeScript](http://coffeescript.org/)
 - [Recommended] [What Lodash provides you](http://lodash.com/docs) (hint, it's very similar to Underscore if you have heard of it)
-- [Optional] Awareness of the mixins provided by [Compass](http://compass-style.org/reference/compass/), [Susy](http://susydocs.oddbird.net/en/latest/)
+- [Optional] Awareness of the mixins provided by [Compass](http://compass-style.org/reference/compass/) and [Susy](http://susydocs.oddbird.net/en/latest/)
 - [Optional] Other Compass plugins that are enabled are [modular-scale](https://github.com/Team-Sass/modular-scale), [toolkit](https://github.com/Team-Sass/toolkit), and [breakpoint](https://github.com/Team-Sass/breakpoint)
 - [Optional] Important for if you don't care for Jade or Coffeescript: know [how to edit the Brocfile.js](https://github.com/broccolijs/broccoli)
 - [Optional] How to read and write [Jade](http://jade-lang.com/reference/)
