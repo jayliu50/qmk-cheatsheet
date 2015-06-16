@@ -8,6 +8,7 @@
   "devDependencies": {
     "bower-update": "0.1.0",
     "broccoli": "^0.16.3",
+    "broccoli-autoprefixer": "^3.0.0",
     "broccoli-bower": "~0.2.1",
     "broccoli-coffee": "~0.4.1",
     "broccoli-compass": "0.2.4",

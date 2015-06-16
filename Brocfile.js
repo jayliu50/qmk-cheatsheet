@@ -9,6 +9,7 @@ var findBowerTrees = require('broccoli-bower')
 var removeTrees = require('broccoli-file-remover')
 var concatenate = require('broccoli-concat')
 var uglify = require('broccoli-uglify-js')
+var autoprefixer = require('broccoli-autoprefixer');
 
 removeTrees('dist', {
   files: '**.*'
@@ -43,6 +44,8 @@ styles = compass(styles, {
   // todo: fork a change in broccoli-compass that lets you pass in an array. Modify generateArgs(options).
   require: 'modular-scale --require susy --require breakpoint --require toolkit'
 })
+
+styles = autoprefixer(styles)
 
 styles = concatenate(styles, {
   inputFiles: ['**/*.css'],
