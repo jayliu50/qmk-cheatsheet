@@ -2,7 +2,7 @@ var filterCoffeeScript = require('broccoli-coffee')
 var compileSass = require('broccoli-sass')
 var compass = require('broccoli-compass')
 var compileJade = require('broccoli-jade')
-var pickFiles = require('broccoli-static-compiler')
+var pickFiles = require('broccoli-funnel')
 var mergeTrees = require('broccoli-merge-trees')
 // todo: add font-awesome when either broccoli-bower learns to use globs or font-awesome stops putting a glob in as its main file
 var findBowerTrees = require('broccoli-bower')
@@ -19,7 +19,7 @@ var app = 'app'
 
 var coffee = pickFiles(app, {
   srcDir: '',
-  files: ['**/*.coffee'],
+  include: ['**/*.coffee'],
   destDir: ''
 })
 
@@ -34,7 +34,7 @@ scripts = concatenate(scripts, {
 
 var styles = pickFiles(app, {
   srcDir: 'styles',
-  files: ['**/*.scss'],
+  include: ['**/*.scss'],
   destDir: 'styles'
 })
 
@@ -42,7 +42,7 @@ styles = compass(styles, {
   outputStyle: 'expanded',
   sassDir: '.',
   // todo: fork a change in broccoli-compass that lets you pass in an array. Modify generateArgs(options).
-  require: 'modular-scale --require susy --require breakpoint --require toolkit'
+  require: ['modular-scale', 'susy', 'breakpoint', 'toolkit']
 })
 
 styles = autoprefixer(styles)
@@ -54,7 +54,7 @@ styles = concatenate(styles, {
 
 styles_vendor = pickFiles(app, {
   srcDir: 'styles',
-  files: ['**/*.css'],
+  include: ['**/*.css'],
   destDir: 'styles'
 })
 
@@ -65,7 +65,7 @@ styles = mergeTrees([
 
 var views = pickFiles(app, {
   srcDir: '/',
-  files: ['**/*.jade'],
+  include: ['**/*.jade'],
   destDir: '/'
 })
 
@@ -85,7 +85,7 @@ bower = pickFiles(bower, {
 
 // var vendor = pickFiles(app, {
 //   srcDir: '/scripts/vendor',
-//   files: ['**/*.js'],
+//   include: ['**/*.js'],
 //   destDir: 'scripts/vendor'
 // })
 
