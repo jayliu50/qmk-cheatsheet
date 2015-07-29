@@ -1,11 +1,9 @@
 # A Prototyping Framework #
-You will probably find ways that it doesn't support older browsers, or produce production-ready code. It uses all the bleeding edge stuff&mdash;the fun stuff. And you will find things set up in my own little, opinionated way of how things should be. You are free to use it, but prepare to be disappointed without making modifications yourself.
+You will probably find ways that it doesn't support older browsers, or produce production-ready code. And you will find things set up in my own little, opinionated way of how things should be. You are free to use it, but prepare to be disappointed without making modifications yourself.
 
 Oh, and I would NOT recommend this to be run on Windows, not until broccoli and all its dependencies are more fully supported. I have tried this on OSX and Ubuntu Linux and those seem to work fine.
 
-This framework uses cool stuff such as
-
-- [Angular 1.3](https://angularjs.org/)
+- [Angular 1.4](https://angularjs.org/)
 - [Lodash](http://lodash.com/)
 - [CoffeeScript](coffeescript.org)
 - [Sass](http://sass-lang.com/)
@@ -28,7 +26,6 @@ This prototyping framework draws from the following knowledge (roughly in order 
 - [Optional] Other Compass plugins that are enabled are [modular-scale](https://github.com/Team-Sass/modular-scale), [toolkit](https://github.com/Team-Sass/toolkit), and [breakpoint](https://github.com/Team-Sass/breakpoint)
 - [Optional] Important for if you don't care for Jade or Coffeescript: know [how to edit the Brocfile.js](https://github.com/broccolijs/broccoli)
 - [Optional] How to read and write [Jade](http://jade-lang.com/reference/)
-
 
 ### Requires the following to be installed ###
 So go and install these for your operating system
@@ -55,15 +52,32 @@ bower install
 broccoli serve
 ```
 
+###Watch but don't serve###
+
+The following code makes it so that broccoli will watch your code and push changes, but it doesn't open up a server. This is good for updating the `/dist` directory
+
+First, run this to install the tool
+
+```
+[sudo] npm install -g broccoli-timepiece
+```
+
+Then run this to keep the `/dist` folder up to date
+
+```
+broccoli-timepiece dist
+```
+
+Changes will then be pushed out to the `/dist` folder.
+
 ### Build the assets only ###
 Broccoli has the ability to build the assets without running a server
 
 ```
-broccoli build [your-target-name-here]
+broccoli build [your-target-folder-name-here]
 ```
 
-## Known Issues ##
+## Known Issues with the Environment ##
 
 - Broccoli is configured to only process CoffeeScript (not even plain Javascript), Jade (not even plain HTML), and SCSS. For those not happy with that, it should be just a touchup in the Brocfile.js. Feel free to submit pull requests.
 - Windows development environment is NOT supported, because it is not fully supported by broccoli
-- Font-awesome has been "hard-copied", because broccoli-bower doesn't know how to deal with the bower-installed font-awesome yet.

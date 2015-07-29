@@ -20,7 +20,7 @@ GEM
     ffi (1.9.10)
     modular-scale (2.0.6)
       compass (>= 0.12.0)
-    multi_json (1.11.1)
+    multi_json (1.11.2)
     rb-fsevent (0.9.5)
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
@@ -42,3 +42,6 @@ DEPENDENCIES
   sass (~> 3.3.7)
   susy
   toolkit (~> 2.0)
+
+BUNDLED WITH
+   1.10.5

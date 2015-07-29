@@ -2,10 +2,8 @@ var filterCoffeeScript = require('broccoli-coffee')
 var compileSass = require('broccoli-sass')
 var compass = require('broccoli-compass')
 var compileJade = require('broccoli-jade')
-var pickFiles = require('broccoli-funnel')
+var funnel = require('broccoli-funnel')
 var mergeTrees = require('broccoli-merge-trees')
-// todo: add font-awesome when either broccoli-bower learns to use globs or font-awesome stops putting a glob in as its main file
-var findBowerTrees = require('broccoli-bower')
 var removeTrees = require('broccoli-file-remover')
 var concatenate = require('broccoli-concat')
 var uglify = require('broccoli-uglify-js')
@@ -17,7 +15,7 @@ removeTrees('dist', {
 
 var app = 'app'
 
-var coffee = pickFiles(app, {
+var coffee = funnel(app, {
   srcDir: '',
   include: ['**/*.coffee'],
   destDir: ''
@@ -32,7 +30,7 @@ scripts = concatenate(scripts, {
   outputFile: '/scripts/app.js'
 })
 
-var styles = pickFiles(app, {
+var styles = funnel(app, {
   srcDir: 'styles',
   include: ['**/*.scss'],
   destDir: 'styles'
@@ -41,8 +39,7 @@ var styles = pickFiles(app, {
 styles = compass(styles, {
   outputStyle: 'expanded',
   sassDir: '.',
-  // todo: fork a change in broccoli-compass that lets you pass in an array. Modify generateArgs(options).
-  require: ['modular-scale', 'susy', 'breakpoint', 'toolkit']
+  require: ['susy', 'breakpoint', 'toolkit', 'modular-scale']
 })
 
 styles = autoprefixer(styles)
@@ -52,7 +49,7 @@ styles = concatenate(styles, {
   outputFile: '/styles/app.css'
 })
 
-styles_vendor = pickFiles(app, {
+styles_vendor = funnel(app, {
   srcDir: 'styles',
   include: ['**/*.css'],
   destDir: 'styles'
@@ -63,27 +60,32 @@ styles = mergeTrees([
   styles
 ])
 
-var views = pickFiles(app, {
+var views = funnel(app, {
   srcDir: '/',
   include: ['**/*.jade'],
   destDir: '/'
 })
 
-var fonts = pickFiles(app, {
+var fonts = funnel(app, {
   srcDir: 'fonts',
   destDir: 'fonts'
 })
 
 var appCss = styles
 
-var bower = mergeTrees(findBowerTrees())
-
-bower = pickFiles(bower, {
+var bower = funnel('bower_components', {
   srcDir: '/',
+  include: [
+    'jquery/dist/jquery.js',
+    'angular/angular.js',
+    'angular-ui-router/release/angular-ui-router.js',
+    'bower-angular-placeholders/angular-placeholders.js',
+    'lodash/lodash.js'
+  ],
   destDir: 'bower'
 })
 
-// var vendor = pickFiles(app, {
+// var vendor = funnel(app, {
 //   srcDir: '/scripts/vendor',
 //   include: ['**/*.js'],
 //   destDir: 'scripts/vendor'
