@@ -98,7 +98,10 @@ var bower = funnel('bower_components', {
 
 var appJs = mergeTrees([scripts, bower]) // todo: merge vendor stuff into appJs if applicable
 
-var appHtml = compileJade(views)
+var appHtml = compileJade(views, {
+  doctype: 'html',
+  pretty: true
+})
 
 
 module.exports = mergeTrees([appJs, appHtml, appCss, fonts])
