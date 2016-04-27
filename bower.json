@@ -26,9 +26,9 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.4.1",
-    "lodash": "~3.10.0",
-    "jquery": "~2.1.4",
+    "angular": "~1.5.5",
+    "lodash": "~4.11.2",
+    "jquery": "~2.2.3",
     "angular-ui-router": "~0.2.15",
     "bower-angular-placeholders": "jayliu50/angular-placeholders"
   }

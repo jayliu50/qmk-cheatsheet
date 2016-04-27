@@ -73,13 +73,15 @@ var fonts = funnel(app, {
 
 var appCss = styles
 
+// todo: get this to concatenate into one file
 var bower = funnel('bower_components', {
   srcDir: '/',
   include: [
     'jquery/dist/jquery.js',
     'angular/angular.js',
     'angular-ui-router/release/angular-ui-router.js',
-    'bower-angular-placeholders/angular-placeholders.js',
+    'bower-angular-placeholders/src/img/img.js',
+    'bower-angular-placeholders/src/txt/txt.js',
     'lodash/lodash.js'
   ],
   destDir: 'bower'
