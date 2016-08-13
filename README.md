@@ -3,7 +3,7 @@ You will probably find ways that it doesn't support older browsers, or produce p
 
 Oh, and I would NOT recommend this to be run on Windows, not until broccoli and all its dependencies are more fully supported. I have tried this on OSX and Ubuntu Linux and those seem to work fine.
 
-- [Angular 1.4](https://angularjs.org/)
+- [Angular 1.5](https://angularjs.org/)
 - [Lodash](http://lodash.com/)
 - [CoffeeScript](coffeescript.org)
 - [Sass](http://sass-lang.com/)
@@ -52,7 +52,7 @@ bower install
 broccoli serve
 ```
 
-###Watch but don't serve###
+### Watch but don't serve ###
 
 The following code makes it so that broccoli will watch your code and push changes, but it doesn't open up a server. This is good for updating the `/dist` directory
 
@@ -76,6 +76,10 @@ Broccoli has the ability to build the assets without running a server
 ```
 broccoli build [your-target-folder-name-here]
 ```
+
+### Debugging Options ###
+
+Turning on DEBUG in `Brocfile.js` will disable Angular template caching and asset-rev.
 
 ## Known Issues with the Environment ##
 

@@ -1,0 +1,17 @@
+doctype html
+html(lang="en")
+  head
+    title Start your prototyping
+    // todo: get all these bower files to come out of the same concatenated file
+    script(src='/bower/jquery/dist/jquery.js')
+    script(src='/bower/lodash/lodash.js')
+    script(src='/bower/angular/angular.js')
+    script(src='/bower/angular-ui-router/release/angular-ui-router.js')
+    script(src='/bower/bower-angular-placeholders/src/img/img.js')
+    script(src='/bower/bower-angular-placeholders/src/txt/txt.js')
+    script(src='/scripts/app.js')
+    link(rel='stylesheet', href='/styles/vendor.css')
+    link(rel='stylesheet', href='/styles/app.css')
+
+  body(ng-app="prototypeAngularApp")
+    main-component

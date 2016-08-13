@@ -4,35 +4,29 @@
 $base: 1em;
 
 %font {
-    font-family: "Open Sans", sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
 
-@mixin headers($base) {
-    @for $i from 0 through 5 {
-        h#{6 - $i} {
-            $size: ms($i + 1, $golden $fourth);
-
-            font-size: #{$size}em;
-            line-height: 1.2;
-
-            a {
-                text-decoration: none;
-            }
-        }
-    }
+h1 {
+  font-size: 2rem;
+  line-height: normal;
+  margin-bottom: 1rem;
 }
 
-@include headers($base);
+h2 {
+  font-size: 1.6rem;
+  line-height: normal;
+  margin-bottom: 1rem;
+}
 
+h2 {
+  font-size: 1.3rem;
+  line-height: normal;
+  margin-bottom: 1rem;
+}
 
-// @include breakpoint($medium) {
-//     @include headers(12px);
-// }
-
-// @include breakpoint($medium $large) {
-//     @include headers(14px);
-// }
-
-// @include breakpoint($large $xlarge) {
-//     @include headers(16px);
-// }
+h4 {
+  font-size: 1.2rem;
+  line-height: normal;
+  margin-bottom: 1rem;
+}

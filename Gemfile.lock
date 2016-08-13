@@ -18,13 +18,11 @@ GEM
     compass-import-once (1.0.5)
       sass (>= 3.2, < 3.5)
     ffi (1.9.10)
-    modular-scale (2.0.6)
-      compass (>= 0.12.0)
     multi_json (1.12.1)
     rb-fsevent (0.9.7)
     rb-inotify (0.9.7)
       ffi (>= 0.5.0)
-    sass (3.3.14)
+    sass (3.4.22)
     sassy-maps (0.4.0)
       sass (~> 3.3)
     susy (2.2.12)
@@ -38,10 +36,9 @@ PLATFORMS
 DEPENDENCIES
   breakpoint
   compass (~> 1.1.0.alpha.3)
-  modular-scale (~> 2.0.5)
-  sass (~> 3.3.7)
+  sass
   susy
   toolkit (~> 2.0)
 
 BUNDLED WITH
-   1.12.4
+   1.12.5

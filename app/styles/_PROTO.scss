@@ -39,7 +39,7 @@ main {
 
 .feature-grid {
 	@include clearfix;
-	@include container(90%);
+	@include container(70%);
 	li {
 		@include gallery(4 of 12);
 	}
@@ -54,6 +54,8 @@ main {
 	.text {
 		@include span(8 at 5 of 12);
 	}
+
+	margin-bottom: 1rem;
 }
 
 .pair-left {
@@ -65,6 +67,8 @@ main {
 	.text {
 		@include span(8 of 12);
 	}
+
+	margin-bottom: 1rem;
 }
 
 a {

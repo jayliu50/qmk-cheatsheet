@@ -1,23 +1,26 @@
-var filterCoffeeScript = require('broccoli-coffee')
-var compileSass = require('broccoli-sass')
-var compass = require('broccoli-compass')
-var compileJade = require('broccoli-jade')
-var funnel = require('broccoli-funnel')
-var mergeTrees = require('broccoli-merge-trees')
-var removeTrees = require('broccoli-file-remover')
-var concatenate = require('broccoli-concat')
-var uglify = require('broccoli-uglify-js')
-var autoprefixer = require('broccoli-autoprefixer');
 
-removeTrees('dist', {
-  files: '**.*'
-})
+var filterCoffeeScript = require('broccoli-coffee');
+var compileSass = require('broccoli-sass');
+var compass = require('broccoli-compass');
+var compileJade = require('broccoli-jade');
+var pug = require('broccoli-pug');
+var funnel = require('broccoli-funnel');
+var mergeTrees = require('broccoli-merge-trees');
+var removeTrees = require('broccoli-file-remover');
+var concatenate = require('broccoli-concat');
+var uglify = require('broccoli-uglify-js');
+var autoprefixer = require('broccoli-autoprefixer');
+var angularTemplates = require("broccoli-angular-templates-cache");
+var AssetRev = require('broccoli-asset-rev');
+
+var DEBUG = true
+var MODULE_NAME = 'prototypeAngularApp'
 
 var app = 'app'
 
 var coffee = funnel(app, {
-  srcDir: '',
   include: ['**/*.coffee'],
+  exclude: ['demo/*'],
   destDir: ''
 })
 
@@ -25,45 +28,53 @@ var scripts = filterCoffeeScript(coffee, {
   bare: true
 })
 
+var views = funnel(app, {
+  srcDir: '/',
+  include: ['**/*.pug'],
+  destDir: '.'
+})
+
+var appHtml = pug([views], {
+  render: true,
+  pugOptions: {
+    doctype: 'html',
+    pretty: DEBUG
+  }
+});
+
+if (!DEBUG) {
+  var appHtmlJs = angularTemplates(appHtml, {
+    srcDir: './',
+    moduleName: MODULE_NAME
+  });
+
+  scripts = mergeTrees([scripts, appHtmlJs])
+
+  appHtml = funnel(appHtml, {
+    srcDir: '/',
+    include: ['index.html'],
+    destDir: '.'
+  })
+}
+
 scripts = concatenate(scripts, {
   inputFiles: ['**/*.js'],
   outputFile: '/scripts/app.js'
 })
 
-var styles = funnel(app, {
-  srcDir: 'styles',
-  include: ['**/*.scss'],
-  destDir: 'styles'
-})
-
-styles = compass(styles, {
-  outputStyle: 'expanded',
+var styles = compass(app + '/styles', {
+  outputStyle: DEBUG ? 'expanded' : 'compressed',
   sassDir: '.',
-  require: ['susy', 'breakpoint', 'toolkit', 'modular-scale']
+  require: ['toolkit', 'susy', 'breakpoint']
 })
 
-styles = autoprefixer(styles)
+if (!DEBUG) {
+  styles = autoprefixer(styles)
+}
 
 styles = concatenate(styles, {
   inputFiles: ['**/*.css'],
   outputFile: '/styles/app.css'
-})
-
-styles_vendor = funnel(app, {
-  srcDir: 'styles',
-  include: ['**/*.css'],
-  destDir: 'styles'
-})
-
-styles = mergeTrees([
-  styles_vendor,
-  styles
-])
-
-var views = funnel(app, {
-  srcDir: '/',
-  include: ['**/*.jade'],
-  destDir: '/'
 })
 
 var fonts = funnel(app, {
@@ -71,7 +82,36 @@ var fonts = funnel(app, {
   destDir: 'fonts'
 })
 
-var appCss = styles
+var font_awesome = funnel('bower_components', {
+  srcDir: '/font-awesome/fonts',
+  include: [
+    'fontawesome-webfont.eot',
+    'fontawesome-webfont.svg',
+    'fontawesome-webfont.ttf',
+    'fontawesome-webfont.woff',
+    'fontawesome-webfont.woff2',
+    'FontAwesome.otf'
+  ],
+  destDir: 'fonts'
+})
+
+fonts = mergeTrees([fonts, font_awesome])
+
+var images = funnel(app, {
+  srcDir: 'images',
+  destDir: 'images'
+})
+
+var bowerCss = concatenate('bower_components', {
+  inputFiles: [
+    'font-awesome/css/font-awesome.min.css'
+  ],
+  outputFile: '/styles/vendor.css'
+})
+
+var appCss = mergeTrees([styles, bowerCss])
+
+// appCss = uglify(appCss, {})
 
 // todo: get this to concatenate into one file
 var bower = funnel('bower_components', {
@@ -87,24 +127,56 @@ var bower = funnel('bower_components', {
   destDir: 'bower'
 })
 
-// var vendor = funnel(app, {
-//   srcDir: '/scripts/vendor',
-//   include: ['**/*.js'],
-//   destDir: 'scripts/vendor'
+
+// var bower = concatenate('bower_components', {
+//   inputFiles: [
+//     //'jquery/jquery.js',
+//     //'angular/angular.js',
+//     'lodash/lodash.min.js',
+//     'angular-ui-router/release/angular-ui-router.js',
+//     'bower-angular-placeholders/src/img/img.js',
+//     'bower-angular-placeholders/src/txt/txt.js',
+//   ],
+//   outputFile: '/scripts/vendor.js'
 // })
 
-// bower = uglify(bower, {
-//   mangle: false
-// })
-
+// bower = uglify(bower, {})
 
 var appJs = mergeTrees([scripts, bower]) // todo: merge vendor stuff into appJs if applicable
 
-var appHtml = compileJade(views, {
-  doctype: 'html',
-  pretty: true
-})
+// unit testing
+// var test;
 
 
-module.exports = mergeTrees([appJs, appHtml, appCss, fonts])
+// if (DEBUG) {
+//   test = funnel('test', {
+//     srcDir: './',
+//     include: ['**/*.coffee'],
+//     destDir: 'test'
+//   })
 
+//   test = filterCoffeeScript(test, {
+//     bare: true
+//   })
+
+//   var testJs = concatenate('bower_components', {
+//     inputFiles: [
+//       'angular-mocks/angular-mocks.js',
+//     ],
+//     outputFile: '/scripts/testVendor.js'
+//   })
+
+//   test = mergeTrees([test, testJs])
+
+// }
+
+var assets;
+
+if (DEBUG) {
+  assets = mergeTrees([appJs, appCss, appHtml, fonts, images])
+}
+else {
+  assets = mergeTrees([appJs, appCss, appHtml, fonts, images])
+}
+
+module.exports = assets
