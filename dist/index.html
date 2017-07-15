@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>QMK Cheatsheet</title>
+    <script src="bower/prism/prism.js"></script>
+    <script src="bower/prism/components/prism-c.js"></script>
+    <link rel="stylesheet" href="styles/vendor.css">
+    <link rel="stylesheet" href="styles/app.css">
+  </head>
+  <body>
+    <h1>QMK Cheatsheet</h1>
+    <main>
+      <section>
+        <h2>Setting up a layer</h2><a href="https://docs.qmk.fm/key_functions.html" target="_blank">Documentation</a>
+        <div class="block">
+          <h3>Step 1: Declare</h3>
+          <p>Create each layer as an entry in an enum. YOUR_LAYER_1 and YOUR_LAYER_2, below, should be replaced with the names of your layers.</p>
+          <aside>in keymap.c</aside>
+          <pre><code class="language-c">// Layer definitions
+enum {
+    YOUR_LAYER_1 = 0,
+    YOUR_LAYER_2,
+    // ..., the rest of your layers
+};</code></pre>
+        </div>
+        <div class="block">
+          <h3>Step 2: Define</h3>
+          <p>Add the keycodes for each layer into the keymaps array. YOUR_LAYER_1 and YOUR_LAYER_2, below, should be replaced with the names of your layers.</p>
+          <aside>in keymap.c</aside>
+          <pre><code class="language-c">const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+
+  [YOUR_LAYER_1] = KEYMAP(
+    // ... list all your keycodes here, separating each with comma
+  ),
+
+  [YOUR_LAYER_2] = KEYMAP(
+    // ... list all your keycodes here, separating each with comma
+  ),
+
+  // ..., the rest of your layers
+
+}; // end of keymap definitions</code></pre>
+        </div>
+        <div class="block">
+          <h3>Step 3: Use, with Layer-switching Functions</h3>
+          <p>Here are the functions you call to actually switch to layers.</p>
+          <table>
+            <thead>
+              <td>Keycode 
+                <aside>to be added to KEYMAP</aside>
+              </td>
+              <td>Description</td>
+            </thead>
+            <tr>
+              <td>
+                <pre><code class="language-c">MO(YOUR_LAYER)</code></pre>
+              </td>
+              <td>While held, MOmentarily switch to YOUR_LAYER.</td>
+            </tr>
+            <tr>
+              <td>
+                <pre><code class="language-c">LT(YOUR_LAYER, KC_XXXX)</code></pre>
+              </td>
+              <td>When held: go to YOUR_LAYER. <br> When tapped: send KC_XXXX</td>
+            </tr>
+            <tr>
+              <td>
+                <pre><code class="language-c">TG(YOUR_LAYER)</code></pre>
+              </td>
+              <td>When tapped, toggles YOUR_LAYER on or off</td>
+            </tr>
+            <tr>
+              <td>
+                <pre><code class="language-c">TO(YOUR_LAYER)</code></pre>
+              </td>
+              <td>When tapped, goes to YOUR_LAYER</td>
+            </tr>
+            <tr>
+              <td>
+                <pre><code class="language-c">TT(YOUR_LAYER)</code></pre>
+              </td>
+              <td>When tapped, toggles YOUR_LAYER on or off. <br> When held, activates YOUR_LAYER.</td>
+            </tr>
+            <tr>
+              <td>
+                <pre><code class="language-c">OSL(YOUR_LAYER)</code></pre>
+              </td>
+              <td>One-Shot Layer. Sends key on YOUR_LAYER</td>
+            </tr>
+          </table>
+        </div>
+        <div class="block">
+          <h3>Light LEDs according to layer</h3>
+          <p>Create a function called matrix_scan_user, and add a case for each layer. Note, you will have to look up which function your keyboard calls to turn LEDs on/off, and insert them to the code, below.</p>
+          <aside>in keymap.c</aside>
+          <pre><code class="language-c">// Runs constantly in the background, in a loop.
+void matrix_scan_user(void) {
+
+    uint8_t layer = biton32(layer_state);
+
+    // INSERT CODE HERE: turn off all leds
+
+    switch (layer) {
+        case YOUR_LAYER_1:
+            // INSERT CODE HERE: turn on leds that correspond to YOUR_LAYER_1
+            break;
+        case YOUR_LAYER_2:
+            // INSERT CODE HERE: turn on leds that correspond to YOUR_LAYER_2
+            break;
+        // add case for each layer
+    }
+};</code></pre>
+        </div>
+      </section>
+      <section>
+        <h2>Modifiers</h2><a href="https://docs.qmk.fm/key_functions.html" target="_blank">Documentation</a>
+        <div class="block">
+          <h3>Modifier Keycode Functions</h3>
+          <table>
+            <thead>
+              <td>Keycode</td>
+              <td>Description</td>
+            </thead>
+            <tr>
+              <td>
+                <pre><code class="language-c">LSFT(KC_XXXX)</code></pre>
+              </td>
+              <td>applies left Shift to KC_XXXX (keycode) - S(KC_XXXX) is an alias</td>
+            </tr>
+            <tr>
+              <td>
+                <pre><code class="language-c">RSFT(KC_XXXX)</code></pre>
+              </td>
+              <td>applies right Shift to KC_XXXX</td>
+            </tr>
+            <tr>
+              <td>
+                <pre><code class="language-c">LCTL(KC_XXXX)</code></pre>
+              </td>
+              <td>applies left Control to KC_XXXX</td>
+            </tr>
+            <tr>
+              <td>
+                <pre><code class="language-c">RCTL(KC_XXXX)</code></pre>
+              </td>
+              <td>applies right Control to KC_XXXX</td>
+            </tr>
+            <tr>
+              <td>
+                <pre><code class="language-c">LALT(KC_XXXX)</code></pre>
+              </td>
+              <td>applies left Alt to KC_XXXX</td>
+            </tr>
+            <tr>
+              <td>
+                <pre><code class="language-c">RALT(KC_XXXX)</code></pre>
+              </td>
+              <td>applies right Alt to KC_XXXX</td>
+            </tr>
+            <tr>
+              <td>
+                <pre><code class="language-c">LGUI(KC_XXXX)</code></pre>
+              </td>
+              <td>applies left GUI (command/win) to KC_XXXX</td>
+            </tr>
+            <tr>
+              <td>
+                <pre><code class="language-c">RGUI(KC_XXXX)</code></pre>
+              </td>
+              <td>applies right GUI (command/win) to KC_XXXX</td>
+            </tr>
+            <tr>
+              <td>
+                <pre><code class="language-c">HYPR(KC_XXXX)</code></pre>
+              </td>
+              <td>applies Hyper (all modifiers) to KC_XXXX</td>
+            </tr>
+            <tr>
+              <td>
+                <pre><code class="language-c">MEH(KC_XXXX)</code></pre>
+              </td>
+              <td>applies Meh (all modifiers except Win/Cmd) to KC_XXXX</td>
+            </tr>
+            <tr>
+              <td>
+                <pre><code class="language-c">LCAG(KC_XXXX)</code></pre>
+              </td>
+              <td>applies CtrlAltGui to KC_XXXX</td>
+            </tr>
+          </table>
+          <p>You can also chain these, like this: LALT(LCTL(KC_DEL)) -- this makes a key that sends Alt, Control, and Delete in a single keypress.</p>
+        </div>
+        <div class="block">
+          <h3>Modifier Special Functions</h3>
+          <table>
+            <thead>
+              <td>Keycode</td>
+              <td>Description</td>
+            </thead>
+            <tr>
+              <td>
+                <pre><code class="language-c">MT(MOD_XXXX, KC_XXXX)</code></pre>
+              </td>
+              <td>When held, activate modifier XXXX (see below) <br> When tapped, send KC_XXXX.</td>
+            </tr>
+            <tr>
+              <td>
+                <pre><code class="language-c">OSM(MOD_XXXX)</code></pre>
+              </td>
+              <td>Activate modifier XXXX (see below) for the next key pressed.</td>
+            </tr>
+          </table>
+          <div class="lh">Modifiers</div>
+          <ul>
+            <li>MOD_LCTL</li>
+            <li>MOD_LSFT</li>
+            <li>MOD_LALT</li>
+            <li>MOD_LGUI</li>
+            <li>MOD_RCTL</li>
+            <li>MOD_RSFT</li>
+            <li>MOD_RALT</li>
+            <li>MOD_RGUI</li>
+            <li>MOD_HYPR</li>
+            <li>MOD_MEH</li>
+          </ul>
+        </div>
+      </section>
+      <section>
+        <h2>Macros</h2><a href="https://docs.qmk.fm/macros.html" target="_blank">Documentation</a>
+        <div class="block">
+          <h3>Step 1: Declare</h3>
+          <p>Create an entry for each macro in an enum. YOUR_MACRO_1 and YOUR_MACRO_2, below, should be replaced with the names of your macros.</p>
+          <aside>in keymap.c, above KEYMAP()</aside>
+          <pre><code class="language-c">// Macro definitions
+enum {
+    YOUR_MACRO_1 = 0,
+    YOUR_MACRO_2,
+    // ..., the rest of your macros
+};</code></pre>
+        </div>
+        <div class="block">
+          <h3>Step 2: Define</h3>
+          <aside>in keymap.c, above KEYMAP()</aside>
+          <pre><code class="language-c">const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
+{
+  switch(id) {
+
+    // for basic strings
+    case YOUR_MACRO_1: {
+        if (record->event.pressed) {
+            SEND_STRING("YOUR_STRING_HERE"); // REPLACE with what you want your macro to be
+            return false;
+        }
+    }
+
+    // for more complex macros
+    case YOUR_MACRO_1: {
+      if (recond->event.pressed) {
+        return MACRO(
+          // INSERT CODE HERE for your macro. See https://docs.qmk.fm/macros.html
+        );
+      }
+    }
+
+
+    //
+  }
+  return MACRO_NONE;
+};</code></pre>
+        </div>
+        <div class="block">
+          <h3>Step 3: Use</h3>
+          <aside>in keymap.c, in your KEYMAP()</aside>
+          <pre><code class="language-c">M(YOUR_MACRO_1)</code></pre>
+        </div>
+      </section>
+      <section>
+        <h2>Tap Dance</h2>
+        <p>Send different key codes depending on how many times key is tapped. Tap key once does one thing, tap twice does another thing, etc.</p><a href="https://docs.qmk.fm/tap_dance.html" target="_blank">Documentation</a>
+        <div class="block">
+          <h3>Step 1: Setup</h3>
+          <aside>in your Makefile</aside>
+          <pre><code class="language-c">TAP_DANCE_ENABLE = yes
+</code></pre>
+          <aside>in your config.h</aside>
+          <pre><code class="language-c">#define TAPPING_TERM 200
+</code></pre>
+        </div>
+        <div class="block">
+          <h3>Step 2: Declare</h3>
+          <p>Create an entry for each tap dance in an enum. YOUR_TAPDANCE_1 and YOUR_TAPDANCE_2, below, should be replaced with the names of your tap dances.</p>
+          <aside>in keymap.c, above KEYMAP()</aside>
+          <pre><code class="language-c">// Tap Dance definitions
+enum {
+    YOUR_TAPDANCE_1 = 0,
+    YOUR_TAPDANCE_2,
+    // ..., the rest of your tap dances
+};</code></pre>
+        </div>
+        <div class="block">
+          <h3>Step 3: Define</h3>
+          <aside>in keymap.c, above KEYMAP()</aside>
+          <pre><code class="language-c">qk_tap_dance_action_t tap_dance_actions[] = {
+    // simple tap dance
+    [YOUR_TAPDANCE_1] = ACTION_TAP_DANCE_DOUBLE(KC_XXXX, KC_YYYY), // replace with your keyco.des
+
+    // complex tap dance function. See https://docs.qmk.fm/tap_dance.html for how to define
+    [YOUR_TAPDANCE_2] = ACTION_TAP_DANCE_FN(your_function_name),
+};
+</code></pre>
+        </div>
+        <div class="block">
+          <h3>Step 3: Use</h3>
+          <aside>in keymap.c, in your KEYMAP()</aside>
+          <pre><code class="language-c">TD(YOUR_TAPDANCE_1)</code></pre>
+        </div>
+      </section>
+    </main>
+    <footer>
+      Version 0.1 by Jay Liu
+      <a href="https://github.com/jayliu50/qmk-cheatsheet/issues" target="_blank">Report Issues</a>
+    </footer>
+  </body>
+</html>

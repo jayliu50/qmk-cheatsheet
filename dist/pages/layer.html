@@ -1,0 +1,103 @@
+
+<section>
+  <h2>Setting up a layer</h2><a href="https://docs.qmk.fm/key_functions.html" target="_blank">Documentation</a>
+  <div class="block">
+    <h3>Step 1: Declare</h3>
+    <p>Create each layer as an entry in an enum. YOUR_LAYER_1 and YOUR_LAYER_2, below, should be replaced with the names of your layers.</p>
+    <aside>in keymap.c</aside>
+    <pre><code class="language-c">// Layer definitions
+enum {
+    YOUR_LAYER_1 = 0,
+    YOUR_LAYER_2,
+    // ..., the rest of your layers
+};</code></pre>
+  </div>
+  <div class="block">
+    <h3>Step 2: Define</h3>
+    <p>Add the keycodes for each layer into the keymaps array. YOUR_LAYER_1 and YOUR_LAYER_2, below, should be replaced with the names of your layers.</p>
+    <aside>in keymap.c</aside>
+    <pre><code class="language-c">const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+
+  [YOUR_LAYER_1] = KEYMAP(
+    // ... list all your keycodes here, separating each with comma
+  ),
+
+  [YOUR_LAYER_2] = KEYMAP(
+    // ... list all your keycodes here, separating each with comma
+  ),
+
+  // ..., the rest of your layers
+
+}; // end of keymap definitions</code></pre>
+  </div>
+  <div class="block">
+    <h3>Step 3: Use, with Layer-switching Functions</h3>
+    <p>Here are the functions you call to actually switch to layers.</p>
+    <table>
+      <thead>
+        <td>Keycode 
+          <aside>to be added to KEYMAP</aside>
+        </td>
+        <td>Description</td>
+      </thead>
+      <tr>
+        <td>
+          <pre><code class="language-c">MO(YOUR_LAYER)</code></pre>
+        </td>
+        <td>While held, MOmentarily switch to YOUR_LAYER.</td>
+      </tr>
+      <tr>
+        <td>
+          <pre><code class="language-c">LT(YOUR_LAYER, KC_XXXX)</code></pre>
+        </td>
+        <td>When held: go to YOUR_LAYER. <br> When tapped: send KC_XXXX</td>
+      </tr>
+      <tr>
+        <td>
+          <pre><code class="language-c">TG(YOUR_LAYER)</code></pre>
+        </td>
+        <td>When tapped, toggles YOUR_LAYER on or off</td>
+      </tr>
+      <tr>
+        <td>
+          <pre><code class="language-c">TO(YOUR_LAYER)</code></pre>
+        </td>
+        <td>When tapped, goes to YOUR_LAYER</td>
+      </tr>
+      <tr>
+        <td>
+          <pre><code class="language-c">TT(YOUR_LAYER)</code></pre>
+        </td>
+        <td>When tapped, toggles YOUR_LAYER on or off. <br> When held, activates YOUR_LAYER.</td>
+      </tr>
+      <tr>
+        <td>
+          <pre><code class="language-c">OSL(YOUR_LAYER)</code></pre>
+        </td>
+        <td>One-Shot Layer. Sends key on YOUR_LAYER</td>
+      </tr>
+    </table>
+  </div>
+  <div class="block">
+    <h3>Light LEDs according to layer</h3>
+    <p>Create a function called matrix_scan_user, and add a case for each layer. Note, you will have to look up which function your keyboard calls to turn LEDs on/off, and insert them to the code, below.</p>
+    <aside>in keymap.c</aside>
+    <pre><code class="language-c">// Runs constantly in the background, in a loop.
+void matrix_scan_user(void) {
+
+    uint8_t layer = biton32(layer_state);
+
+    // INSERT CODE HERE: turn off all leds
+
+    switch (layer) {
+        case YOUR_LAYER_1:
+            // INSERT CODE HERE: turn on leds that correspond to YOUR_LAYER_1
+            break;
+        case YOUR_LAYER_2:
+            // INSERT CODE HERE: turn on leds that correspond to YOUR_LAYER_2
+            break;
+        // add case for each layer
+    }
+};</code></pre>
+  </div>
+</section>
