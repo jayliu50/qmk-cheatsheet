@@ -3,14 +3,12 @@ You will probably find ways that it doesn't support older browsers, or produce p
 
 Oh, and I would NOT recommend this to be run on Windows, not until broccoli and all its dependencies are more fully supported. I have tried this on OSX and Ubuntu Linux and those seem to work fine.
 
-- [Angular 1.5](https://angularjs.org/)
+- [Angular 1.6](https://angularjs.org/)
 - [Lodash](http://lodash.com/)
 - [CoffeeScript](coffeescript.org)
 - [Sass](http://sass-lang.com/)
-- [Jade](http://jade-lang.com/)
+- [Pug](https://pugjs.org/api/getting-started.html)
 - [FontAwesome](http://fontawesome.io/)
-- [Compass](http://compass-style.org/)
-- [Susy](http://susy.oddbird.net/)
 - Build using [Broccoli](https://github.com/broccolijs/broccoli)
 
 ## Getting Started ##
@@ -22,10 +20,8 @@ This prototyping framework draws from the following knowledge (roughly in order 
 - [Recommended] How to read and write [Sass (SCSS)](http://sass-lang.com/guide)
 - [Recommended] How to read and write [CoffeeScript](http://coffeescript.org/)
 - [Recommended] [What Lodash provides you](http://lodash.com/docs) (hint, it's very similar to Underscore if you have heard of it)
-- [Optional] Awareness of the mixins provided by [Compass](http://compass-style.org/reference/compass/) and [Susy](http://susydocs.oddbird.net/en/latest/)
-- [Optional] Other Compass plugins that are enabled are [modular-scale](https://github.com/Team-Sass/modular-scale), [toolkit](https://github.com/Team-Sass/toolkit), and [breakpoint](https://github.com/Team-Sass/breakpoint)
-- [Optional] Important for if you don't care for Jade or Coffeescript: know [how to edit the Brocfile.js](https://github.com/broccolijs/broccoli)
-- [Optional] How to read and write [Jade](http://jade-lang.com/reference/)
+- [Optional] Important for if you don't care for Pug or Coffeescript: know [how to edit the Brocfile.js](https://github.com/broccolijs/broccoli)
+- [Optional] How to read and write [Pug](https://pugjs.org/api/getting-started.htmlreference/)
 
 ### Requires the following to be installed ###
 So go and install these for your operating system
@@ -83,5 +79,10 @@ Turning on DEBUG in `Brocfile.js` will disable Angular template caching and asse
 
 ## Known Issues with the Environment ##
 
-- Broccoli is configured to only process CoffeeScript (not even plain Javascript), Jade (not even plain HTML), and SCSS. For those not happy with that, it should be just a touchup in the Brocfile.js. Feel free to submit pull requests.
+- Broccoli is configured to only process CoffeeScript (not even plain Javascript), Pug (not even plain HTML), and SCSS. For those not happy with that, it should be just a touchup in the Brocfile.js. Feel free to submit pull requests.
 - Windows development environment is NOT supported, because it is not fully supported by broccoli
+
+## To do ##
+
+- Get Susy v3 set up
+- Upgrade away from Bower?

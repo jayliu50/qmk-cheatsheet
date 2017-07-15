@@ -6,22 +6,25 @@
   "author": "Jay Liu <jayliu50@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "broccoli": "^0.16.5",
-    "broccoli-angular-templates-cache": "jayliu50/broccoli-angular-templates-cache",
+    "broccoli": "^1.1.2",
+    "broccoli-angular-templates-cache": "github:jayliu50/broccoli-angular-templates-cache",
     "broccoli-asset-rev": "^2.4.6",
-    "broccoli-autoprefixer": "^4.1.0",
-    "broccoli-coffee": "~0.6.0",
-    "broccoli-compass": "0.2.4",
-    "broccoli-concat": "2.3.4",
+    "broccoli-autoprefixer": "^5.0.0",
+    "broccoli-coffee": "^0.8.0",
+    "broccoli-concat": "^3.2.2",
     "broccoli-file-remover": "^0.3.1",
     "broccoli-funnel": "^1.0.1",
     "broccoli-jade": "~1.1.0",
-    "broccoli-merge-trees": "~1.1.1",
+    "broccoli-merge-trees": "^2.0.0",
     "broccoli-pug": "0.0.4",
-    "broccoli-sass": "~0.7.0",
+    "broccoli-sass": "^0.7.0",
     "broccoli-template": "~0.1.1",
     "broccoli-uglify-js": "~0.2.0",
-    "http-server": "^0.9.0",
+    "http-server": "^0.10.0",
+    "node-sass": "^4.5.3",
     "npm-check-updates": "^2.0.1"
+  },
+  "dependencies": {
+    // "susy": "^3.0.0"
   }
 }

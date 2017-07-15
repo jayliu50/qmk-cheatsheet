@@ -1,9 +1,5 @@
-@import "compass";
-@import "compass/reset";
-@import "breakpoint";
-@import "susy";
-@import "toolkit";
-
+// @import "susy"; // todo: upgrade to v3
+@import "bower/normalize.css/normalize.css";
 @import "grid";
 @import "colors";
 @import "typography";

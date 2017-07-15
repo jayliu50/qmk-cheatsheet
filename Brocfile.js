@@ -1,9 +1,8 @@
 
 var filterCoffeeScript = require('broccoli-coffee');
 var compileSass = require('broccoli-sass');
-var compass = require('broccoli-compass');
-var compileJade = require('broccoli-jade');
 var pug = require('broccoli-pug');
+var sass = require('broccoli-sass');
 var funnel = require('broccoli-funnel');
 var mergeTrees = require('broccoli-merge-trees');
 var removeTrees = require('broccoli-file-remover');
@@ -62,10 +61,8 @@ scripts = concatenate(scripts, {
   outputFile: '/scripts/app.js'
 })
 
-var styles = compass(app + '/styles', {
-  outputStyle: DEBUG ? 'expanded' : 'compressed',
-  sassDir: '.',
-  require: ['toolkit', 'susy', 'breakpoint']
+var styles = sass([app + '/styles'], 'app.scss', 'app.css', {
+    outputStyle: DEBUG ? 'expanded' : 'compressed',
 })
 
 if (!DEBUG) {
@@ -79,7 +76,8 @@ styles = concatenate(styles, {
 
 var fonts = funnel(app, {
   srcDir: 'fonts',
-  destDir: 'fonts'
+  destDir: 'fonts',
+  allowEmpty: true,
 })
 
 var font_awesome = funnel('bower_components', {
@@ -99,7 +97,8 @@ fonts = mergeTrees([fonts, font_awesome])
 
 var images = funnel(app, {
   srcDir: 'images',
-  destDir: 'images'
+  destDir: 'images',
+  allowEmpty: true,
 })
 
 var bowerCss = concatenate('bower_components', {
@@ -122,7 +121,8 @@ var bower = funnel('bower_components', {
     'angular-ui-router/release/angular-ui-router.js',
     'bower-angular-placeholders/src/img/img.js',
     'bower-angular-placeholders/src/txt/txt.js',
-    'lodash/lodash.js'
+    'lodash/lodash.js',
+    'normalize-css/normalize.css',
   ],
   destDir: 'bower'
 })
