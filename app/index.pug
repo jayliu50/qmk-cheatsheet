@@ -1,17 +1,19 @@
 doctype html
 html(lang="en")
   head
-    title Start your prototyping
-    // todo: get all these bower files to come out of the same concatenated file
-    script(src='/bower/jquery/dist/jquery.js')
-    script(src='/bower/lodash/lodash.js')
-    script(src='/bower/angular/angular.js')
-    script(src='/bower/angular-ui-router/release/angular-ui-router.js')
-    script(src='/bower/bower-angular-placeholders/src/img/img.js')
-    script(src='/bower/bower-angular-placeholders/src/txt/txt.js')
-    script(src='/scripts/app.js')
+    title QMK Cheatsheet
+    script(src='/bower/prism/prism.js')
+    script(src='/bower/prism/components/prism-c.js')
     link(rel='stylesheet', href='/styles/vendor.css')
     link(rel='stylesheet', href='/styles/app.css')
 
-  body(ng-app="prototypeAngularApp")
-    main-component
+  body
+    h1 QMK Cheatsheet
+    main
+      include pages/layer
+      include pages/modifiers
+      include pages/macros
+      include pages/tap-dance
+    footer.
+      Version 0.1 by Jay Liu
+      #[a(href="https://github.com/jayliu50/qmk-cheatsheet/issues" target="_blank") Report Issues]

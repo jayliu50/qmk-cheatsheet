@@ -32,6 +32,7 @@
     "angular-ui-router": "~1.0.5",
     "bower-angular-placeholders": "jayliu50/angular-placeholders",
     "font-awesome": "^4.6.3",
-    "normalize-css": "^7.0.0"
+    "normalize-css": "^7.0.0",
+    "prism": "^1.6.0"
   }
 }

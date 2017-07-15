@@ -25,6 +25,6 @@
     "npm-check-updates": "^2.0.1"
   },
   "dependencies": {
-    // "susy": "^3.0.0"
+    "prettier": "^1.5.3"
   }
 }
