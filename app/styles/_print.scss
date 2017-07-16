@@ -1,0 +1,52 @@
+@media print {
+
+  html {
+    font-size: 8px;
+  }
+
+  .feature-overview {
+    column-span: all;
+    background: transparent;
+  }
+
+  main {
+    columns: 3;
+    column-gap: 12px;
+  }
+
+  footer {
+    column-span: all;
+  }
+
+  table {
+    break-inside: auto;
+
+    thead {
+      display: none;
+    }
+
+    tbody {
+      break-inside: auto;
+    }
+
+    tr {
+      display: flex;
+      flex-direction: column;
+      break-inside: auto;
+    }
+  }
+
+  a:after {
+    content: " (" attr(href) ") ";
+  }
+
+  a[name], a[name]:after {
+    display: none;
+  }
+
+  code[class*="language-"] {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+}

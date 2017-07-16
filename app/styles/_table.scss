@@ -1,0 +1,10 @@
+table {
+  thead td {
+    background: $color-gray-light;
+    padding: 0.5em;
+
+    :not(aside) {
+      font-weight: 700;
+    }
+  }
+}

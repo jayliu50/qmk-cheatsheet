@@ -1,3 +1,7 @@
-$color-gray: darken(#fff, 15% * 3);
-$color-gray-dark: darken(#fff, 15% * 4);
-$color-gray-light: darken(#fff, 15% * 1.5);
+$color-blue: #2d3586;
+$color-red: darken(#f44d29, 15%);
+$color-gray: #5b5f62;
+$color-gray-light: lighten($color-gray, 61%);
+$color-gray-dark: #32313f;
+$color-white: white;
+$color-blue-light: lighten($color-blue, 60%);

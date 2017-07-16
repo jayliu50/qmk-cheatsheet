@@ -11,7 +11,7 @@ var autoprefixer = require('broccoli-autoprefixer');
 var angularTemplates = require('broccoli-angular-templates-cache');
 var AssetRev = require('broccoli-asset-rev');
 
-var DEBUG = true;
+var DEBUG = false;
 var MODULE_NAME = 'prototypeAngularApp';
 
 var app = 'app';
@@ -64,14 +64,15 @@ var styles = sass([app + '/styles'], 'app.scss', 'app.css', {
   outputStyle: DEBUG ? 'expanded' : 'compressed',
 });
 
-if (!DEBUG) {
-  styles = autoprefixer(styles);
-}
 
 styles = concatenate(styles, {
   inputFiles: ['**/*.css'],
   outputFile: '/styles/app.css',
 });
+
+if (!DEBUG) {
+  styles = autoprefixer(styles);
+}
 
 var fonts = funnel(app, {
   srcDir: 'fonts',

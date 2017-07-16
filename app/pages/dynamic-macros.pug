@@ -1,0 +1,71 @@
+section
+  a(name="dynamic-macros")
+  h2 Dynamic Macros
+  a(href="https://docs.qmk.fm/dynamic_macros.html" target="_blank") Full Documentation
+
+  .intro
+    p Record and play keystrokes
+
+  .block
+    h3 Step 1: Setup
+
+    aside include this snippet in keymap.c
+    pre
+      code.language-c.
+        enum planck_keycodes {
+            QWERTY = SAFE_RANGE,
+            COLEMAK,
+            DVORAK,
+            PLOVER,
+            LOWER,
+            RAISE,
+            BACKLIT,
+            EXT_PLV,
+            DYNAMIC_MACRO_RANGE,
+        };
+
+        // this is called when dynamic macro buffer is full
+        void backlight_toggle(void) {
+            // INSERT CODE HERE: for example, call function to turn on indicator LED.
+        }
+
+        #include "dynamic_macro.h"`
+
+  .block
+    h3 Step 2: Use
+    aside in keymap.c, in your KEYMAP()
+
+    table
+      tr
+        td Keycode #[aside to be added to your call to KEYMAP()]
+        td Description
+      tr
+        td
+          pre
+            code.language-c.
+              DYN_REC_START1
+        td start recording the macro 1
+      tr
+        td
+          pre
+            code.language-c.
+              DYN_REC_START2
+        td start recording the macro 2
+      tr
+        td
+          pre
+            code.language-c.
+              DYN_MACRO_PLAY1
+        td replay the macro 1
+      tr
+        td
+          pre
+            code.language-c.
+              DYN_MACRO_PLAY2
+        td replay the macro 2
+      tr
+        td
+          pre
+            code.language-c.
+              DYN_REC_STOP
+        td finish the macro that is currently being recorded.

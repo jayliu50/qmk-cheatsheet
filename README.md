@@ -1,19 +1,22 @@
 # QMK Cheatsheet #
 
-Source code for the QMK Cheatsheet.
+Source code for the unofficial QMK Cheatsheet.
 
+Goals of this cheatsheet
+
+- be helpful for 80% of the users
+- brevity
+- give consistent albeit opinionated examples
+
+As some information may be incomplete, please submit pull requests.
 
 
 ## Things to do ##
 
-- add styling
-- make printable
 - add more topics (below)
 
 ## Topics not (yet?) covered ##
 
-- dynamic macros
-- mouse keys
 - custom functions
 - leader key
 - common config.h settings

@@ -1,80 +1,83 @@
 section
+  a(name="modifiers")
   h2 Modifiers
-  a(href="https://docs.qmk.fm/key_functions.html" target="_blank") Documentation
+  a(href="https://docs.qmk.fm/key_functions.html" target="_blank") Full Documentation
 
   .block
     h3 Modifier Keycode Functions
 
     table
       thead
-        td Keycode
-        td Description
-      tr
-        td
-          pre
-            code.language-c.
-              LSFT(KC_XXXX)
-        td applies left Shift to KC_XXXX (keycode) - S(KC_XXXX) is an alias
-      tr
-        td
-          pre
-            code.language-c.
-              RSFT(KC_XXXX)
-        td applies right Shift to KC_XXXX
-      tr
-        td
-          pre
-            code.language-c.
-              LCTL(KC_XXXX)
-        td applies left Control to KC_XXXX
-      tr
-        td
-          pre
-            code.language-c.
-              RCTL(KC_XXXX)
-        td applies right Control to KC_XXXX
-      tr
-        td
-          pre
-            code.language-c.
-              LALT(KC_XXXX)
-        td applies left Alt to KC_XXXX
-      tr
-        td
-          pre
-            code.language-c.
-              RALT(KC_XXXX)
-        td applies right Alt to KC_XXXX
-      tr
-        td
-          pre
-            code.language-c.
-              LGUI(KC_XXXX)
-        td applies left GUI (command/win) to KC_XXXX
-      tr
-        td
-          pre
-            code.language-c.
-              RGUI(KC_XXXX)
-        td applies right GUI (command/win) to KC_XXXX
-      tr
-        td
-          pre
-            code.language-c.
-              HYPR(KC_XXXX)
-        td applies Hyper (all modifiers) to KC_XXXX
-      tr
-        td
-          pre
-            code.language-c.
-              MEH(KC_XXXX)
-        td applies Meh (all modifiers except Win/Cmd) to KC_XXXX
-      tr
-        td
-          pre
-            code.language-c.
-              LCAG(KC_XXXX)
-        td applies CtrlAltGui to KC_XXXX
+        tr
+          td Keycode #[aside to be added to your call to KEYMAP()]
+          td Description
+      tbody
+        tr
+          td
+            pre
+              code.language-c.
+                LSFT(KC_XXXX)
+          td applies left Shift to KC_XXXX (keycode) - S(KC_XXXX) is an alias
+        tr
+          td
+            pre
+              code.language-c.
+                RSFT(KC_XXXX)
+          td applies right Shift to KC_XXXX
+        tr
+          td
+            pre
+              code.language-c.
+                LCTL(KC_XXXX)
+          td applies left Control to KC_XXXX
+        tr
+          td
+            pre
+              code.language-c.
+                RCTL(KC_XXXX)
+          td applies right Control to KC_XXXX
+        tr
+          td
+            pre
+              code.language-c.
+                LALT(KC_XXXX)
+          td applies left Alt to KC_XXXX
+        tr
+          td
+            pre
+              code.language-c.
+                RALT(KC_XXXX)
+          td applies right Alt to KC_XXXX
+        tr
+          td
+            pre
+              code.language-c.
+                LGUI(KC_XXXX)
+          td applies left GUI (command/win) to KC_XXXX
+        tr
+          td
+            pre
+              code.language-c.
+                RGUI(KC_XXXX)
+          td applies right GUI (command/win) to KC_XXXX
+        tr
+          td
+            pre
+              code.language-c.
+                HYPR(KC_XXXX)
+          td applies Hyper (all modifiers) to KC_XXXX
+        tr
+          td
+            pre
+              code.language-c.
+                MEH(KC_XXXX)
+          td applies Meh (all modifiers except Win/Cmd) to KC_XXXX
+        tr
+          td
+            pre
+              code.language-c.
+                LCAG(KC_XXXX)
+          td applies CtrlAltGui to KC_XXXX
 
     p You can also chain these, like this: LALT(LCTL(KC_DEL)) -- this makes a key that sends Alt, Control, and Delete in a single keypress.
 
@@ -84,22 +87,24 @@ section
 
     table
       thead
-        td Keycode
+        td Keycode #[aside to be added to your call to KEYMAP()]
         td Description
-      tr
-        td
-          pre
-            code.language-c.
-              MT(MOD_XXXX, KC_XXXX)
-        td When held, activate modifier XXXX (see below) #[br] When tapped, send KC_XXXX.
-      tr
-        td
-          pre
-            code.language-c.
-              OSM(MOD_XXXX)
-        td Activate modifier XXXX (see below) for the next key pressed.
+      tbody
+        tr
+          td
+            pre
+              code.language-c.
+                MT(MOD_XXXX, KC_XXXX)
+          td When held, activate modifier XXXX (see below) #[br] When tapped, send KC_XXXX.
+        tr
+          td
+            pre
+              code.language-c.
+                OSM(MOD_XXXX)
+          td Activate modifier XXXX (see below) for the next key pressed.
 
-    .lh Modifiers
+    h4 Modifiers
+    p You may use any of the following modifiers in the above special functions.
     ul
       li MOD_LCTL
       li MOD_LSFT

@@ -1,0 +1,128 @@
+section
+  a(name="mouse")
+  h2 Mouse Keys
+  a(href="https://docs.qmk.fm/mouse_keys.html" target="_blank") Full Documentation
+  .intro
+    p Control your mouse with the keyboard.
+
+  .block
+    h3 Step 1: Setup
+    aside in your Makefile
+    pre
+      code.language-c.
+        MOUSEKEY_ENABLE = yes
+
+    aside (optional) set these in your config.h
+    pre
+      code.language-c.
+        #define MOUSEKEY_DELAY                              300
+        #define MOUSEKEY_INTERVAL                           50
+        #define MOUSEKEY_MAX_SPEED                          10
+        #define MOUSEKEY_TIME_TO_MAX                        20
+        #define MOUSEKEY_WHEEL_MAX_SPEED                    8
+        #define MOUSEKEY_WHEEL_MAX_TIME_TO_MAX              40
+
+  .block
+    h3 Step 2: Use
+
+    table
+      thead
+        tr
+          td Keycode #[aside to be added to your call to KEYMAP()]
+          td Description
+      tr
+        td
+          pre
+            code.language-c.
+              KC_MS_UP
+        td Mouse Cursor Up
+      tr
+        td
+          pre
+            code.language-c.
+              KC_MS_DOWN
+        td Mouse Cursor Down
+      tr
+        td
+          pre
+            code.language-c.
+              KC_MS_LEFT
+        td Mouse Cursor Left
+      tr
+        td
+          pre
+            code.language-c.
+              KC_MS_RIGHT
+        td Mouse Cursor Right
+      tr
+        td
+          pre
+            code.language-c.
+              KC_MS_BTN1
+        td Mouse Button 1
+      tr
+        td
+          pre
+            code.language-c.
+              KC_MS_BTN2
+        td Mouse Button 2
+      tr
+        td
+          pre
+            code.language-c.
+              KC_MS_BTN3
+        td Mouse Button 3
+      tr
+        td
+          pre
+            code.language-c.
+              KC_MS_BTN4
+        td Mouse Button 4
+      tr
+        td
+          pre
+            code.language-c.
+              KC_MS_BTN5
+        td Mouse Button 5
+      tr
+        td
+          pre
+            code.language-c.
+              KC_MS_WH_UP
+        td Mouse Wheel Up
+      tr
+        td
+          pre
+            code.language-c.
+              KC_MS_WH_DOWN
+        td Mouse Wheel Down
+      tr
+        td
+          pre
+            code.language-c.
+              KC_MS_WH_LEFT
+        td Mouse Wheel Left
+      tr
+        td
+          pre
+            code.language-c.
+              KC_MS_WH_RIGHT
+        td Mouse Wheel Right
+      tr
+        td
+          pre
+            code.language-c.
+              KC_MS_ACCEL0
+        td Set Mouse Acceleration Speed to 0
+      tr
+        td
+          pre
+            code.language-c.
+              KC_MS_ACCEL1
+        td Set Mouse Acceleration Speed to 1
+      tr
+        td
+          pre
+            code.language-c.
+              KC_MS_ACCEL2
+        td Set Mouse Acceleration Speed to 2

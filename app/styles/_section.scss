@@ -1,0 +1,24 @@
+section {
+  background: $color-gray-light;
+
+  max-width: 640px;
+  margin: 0.25em auto 0;
+
+  h2 {
+    padding: 0.25em;
+    background: $color-blue;
+    color: $color-white;
+  }
+
+  .intro {
+    font-size: 1.2rem;
+    font-style: italic;
+  }
+
+  .block {
+    margin: 3em;
+  }
+
+}
+
+

@@ -1,16 +1,17 @@
 section
+  a(name="macros")
   h2 Macros
-  a(href="https://docs.qmk.fm/macros.html" target="_blank") Documentation
+  a(href="https://docs.qmk.fm/macros.html" target="_blank") Full Documentation
 
   .block
     h3 Step 1: Declare
 
-    p Create an entry for each macro in an enum. YOUR_MACRO_1 and YOUR_MACRO_2, below, should be replaced with the names of your macros.
+    p Create an entry for each macro in an enum. Replace YOUR_MACRO_1, YOUR_MACRO_2, etc., below, with the names of your macros.
 
     aside in keymap.c, above KEYMAP()
     pre
       code.language-c.
-        // Macro definitions
+        // Macro Declarations
         enum {
             YOUR_MACRO_1 = 0,
             YOUR_MACRO_2,
@@ -21,6 +22,7 @@ section
     aside in keymap.c, above KEYMAP()
     pre
       code.language-c.
+        // Macro Definitions
         const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
         {
           switch(id) {
@@ -33,7 +35,7 @@ section
                 }
             }
 
-            // for more complex macros
+            // for more complex macros (want to add modifiers, etc.)
             case YOUR_MACRO_1: {
               if (recond->event.pressed) {
                 return MACRO(
@@ -49,7 +51,7 @@ section
         };
   .block
     h3 Step 3: Use
-    aside in keymap.c, in your KEYMAP()
+    aside in keymap.c, in your call to KEYMAP()
     pre
       code.language-c.
         M(YOUR_MACRO_1)

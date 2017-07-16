@@ -1,15 +1,16 @@
 section
+  a(name="layers")
   h2 Setting up a layer
-  a(href="https://docs.qmk.fm/key_functions.html" target="_blank") Documentation
+  a(href="https://docs.qmk.fm/key_functions.html" target="_blank") Full Documentation
 
   .block
     h3 Step 1: Declare
 
-    p Create each layer as an entry in an enum. YOUR_LAYER_1 and YOUR_LAYER_2, below, should be replaced with the names of your layers.
+    p Create each layer as an entry in an enum. Replace YOUR_LAYER_1, YOUR_LAYER_2, etc., below, with names of your layers.
     aside in keymap.c
     pre
       code.language-c.
-        // Layer definitions
+        // Layer Declarations
         enum {
             YOUR_LAYER_1 = 0,
             YOUR_LAYER_2,
@@ -18,10 +19,12 @@ section
   .block
     h3 Step 2: Define
 
-    p Add the keycodes for each layer into the keymaps array. YOUR_LAYER_1 and YOUR_LAYER_2, below, should be replaced with the names of your layers.
-    aside in keymap.c
+    p Add the keycodes for each layer into the keymaps array, by calling KEYMAP() for each layer.
+    aside in keymap.c, in the keymaps array
     pre
       code.language-c.
+
+        // Layer Definitions
         const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
           [YOUR_LAYER_1] = KEYMAP(
@@ -34,16 +37,17 @@ section
 
           // ..., the rest of your layers
 
-        }; // end of keymap definitions
+        };
   .block
-    h3 Step 3: Use, with Layer-switching Functions
+    h3 Step 3: Use
 
-    p Here are the functions you call to actually switch to layers.
+    p Here are a variety of ways to change the layer.
 
     table
       thead
-        td Keycode #[aside to be added to KEYMAP]
-        td Description
+        tr
+          td Keycode #[aside to be added to your call to KEYMAP()]
+          td Description
       tr
         td
           pre
@@ -55,13 +59,13 @@ section
           pre
             code.language-c.
               LT(YOUR_LAYER, KC_XXXX)
-        td When held: go to YOUR_LAYER. #[br] When tapped: send KC_XXXX
+        td Layer Tap. When held: go to YOUR_LAYER. #[br] When tapped: send KC_XXXX
       tr
         td
           pre
             code.language-c.
               TG(YOUR_LAYER)
-        td When tapped, toggles YOUR_LAYER on or off
+        td Layer Toggle. When tapped, toggles YOUR_LAYER on or off
       tr
         td
           pre

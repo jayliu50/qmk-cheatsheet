@@ -7,26 +7,60 @@ $base: 1em;
   font-family: "Open Sans", sans-serif;
 }
 
+html {
+  font-size: 14px;
+}
+
+body {
+  @extend %font;
+}
+
 h1 {
+  @extend %font;
   font-size: 2rem;
   line-height: normal;
   margin-bottom: 1rem;
 }
 
 h2 {
+  @extend %font;
   font-size: 1.6rem;
   line-height: normal;
   margin-bottom: 1rem;
 }
 
 h2 {
+  @extend %font;
   font-size: 1.3rem;
   line-height: normal;
   margin-bottom: 1rem;
 }
 
 h4 {
+  @extend %font;
   font-size: 1.2rem;
   line-height: normal;
   margin-bottom: 1rem;
+}
+
+p {
+  @extend %font;
+}
+
+aside {
+  color: $color-gray-dark;
+  font-style: italic;
+}
+
+a {
+  text-decoration: none;
+  color: $color-red;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+li {
+  line-height: normal;
 }

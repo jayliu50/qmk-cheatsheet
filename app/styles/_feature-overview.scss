@@ -1,0 +1,33 @@
+.feature-overview {
+
+  padding: 0.5em 0 1em;
+
+  h1 {
+    text-align: center;
+    padding: 1em 0 1.5em;
+  }
+
+  .features {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1em;
+    padding: 0 1em;
+  }
+
+  .feature {
+    width: 30%; // todo: use susy
+    margin-left: 3%;
+    margin-bottom: 1em;
+    font-style: normal;
+
+    a {
+      font-weight: 700;
+    }
+
+    aside {
+      color: $color-gray;
+      font-size: 0.8rem;
+      line-height: normal;
+    }
+  }
+}
