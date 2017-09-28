@@ -9,6 +9,12 @@ $base: 1em;
 
 html {
   font-size: 14px;
+  line-height: 1.4;
+
+  @media(min-width: 2000px) {
+    font-size: 16px;
+  }
+
 }
 
 body {
@@ -17,34 +23,35 @@ body {
 
 h1 {
   @extend %font;
-  font-size: 2rem;
+  font-size: 2em;
   line-height: normal;
   margin-bottom: 1rem;
 }
 
 h2 {
   @extend %font;
-  font-size: 1.6rem;
+  font-size: 1.6em;
   line-height: normal;
   margin-bottom: 1rem;
 }
 
 h2 {
   @extend %font;
-  font-size: 1.3rem;
+  font-size: 1.3em;
   line-height: normal;
   margin-bottom: 1rem;
 }
 
 h4 {
   @extend %font;
-  font-size: 1.2rem;
+  font-size: 1.2em;
   line-height: normal;
   margin-bottom: 1rem;
 }
 
 p {
   @extend %font;
+  font-size: 1em;
 }
 
 aside {

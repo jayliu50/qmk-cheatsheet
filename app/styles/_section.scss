@@ -1,22 +1,41 @@
 section {
   background: $color-gray-light;
 
-  max-width: 640px;
-  margin: 0.25em auto 0;
+  max-width: 55rem;
 
-  h2 {
-    padding: 0.25em;
+  @media (min-width: 1300px) {
+    max-width: 70rem;
+  }
+
+  margin: 0.25em auto 0;
+  padding-bottom: 1em;
+
+  .section-head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.02em 1.5em;
     background: $color-blue;
-    color: $color-white;
+
+    h2 {
+      color: $color-white;
+      flex: 1;
+    }
+
+    a {
+      color: $color-white;
+    }
   }
 
   .intro {
-    font-size: 1.2rem;
+    font-size: 1.2em;
     font-style: italic;
+    margin: 0 1.5rem;
   }
 
   .block {
-    margin: 3em;
+    margin: 2rem 3rem;
   }
 
 }

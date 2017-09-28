@@ -1,7 +1,8 @@
+include ../components/mixins.pug
+
 section
-  a(name="mouse")
-  h2 Mouse Keys
-  a(href="https://docs.qmk.fm/mouse_keys.html" target="_blank") Full Documentation
+  +section-head('Mouse Keys', 'mouse', 'https://docs.qmk.fm/mouse_keys.html')
+
   .intro
     p Control your mouse with the keyboard.
 

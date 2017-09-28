@@ -1,0 +1,6 @@
+mixin section-head(label, slug, link)
+  .section-head
+    a(name!=slug)
+    h2= label
+    a(href!=link target="_blank")
+      span.no-print Full Docs

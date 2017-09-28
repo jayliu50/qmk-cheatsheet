@@ -1,7 +1,7 @@
+include ../components/mixins.pug
+
 section
-  a(name="tap-dance")
-  h2 Tap Dance
-  a(href="https://docs.qmk.fm/tap_dance.html" target="_blank") Full Documentation
+  +section-head('Tap Dance', 'tap-dance', 'https://docs.qmk.fm/tap_dance.html')
 
   .intro
     p Send different key codes depending on how many times key is tapped. Tap key once does one thing, tap twice does another thing, etc.
