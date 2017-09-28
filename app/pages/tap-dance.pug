@@ -9,12 +9,12 @@ section
   .block
     h3 Step 1: Setup
 
-    aside in your Makefile
+    aside in rules.mk:
     pre
       code.language-c.
         TAP_DANCE_ENABLE = yes
 
-    aside in your config.h
+    aside in config.h:
     pre
       code.language-c.
         #define TAPPING_TERM 200
@@ -24,7 +24,7 @@ section
 
     p Create an entry for each tap dance in an enum. Replace YOUR_TAPDANCE_1, YOUR_TAPDANCE_2, etc., with the names of your tap dances.
 
-    aside in keymap.c, above KEYMAP()
+    aside in keymap.c, before KEYMAP():
     pre
       code.language-c.
         // Tap Dance Declarations
@@ -35,7 +35,7 @@ section
         };
   .block
     h3 Step 3: Define
-    aside in keymap.c, above KEYMAP()
+    aside in keymap.c, before KEYMAP():
     pre
       code.language-c.
 
@@ -50,7 +50,7 @@ section
 
   .block
     h3 Step 4: Use
-    aside in keymap.c, in your KEYMAP()
+    aside in keymap.c, in your KEYMAP():
     pre
       code.language-c.
         TD(YOUR_TAPDANCE_1)

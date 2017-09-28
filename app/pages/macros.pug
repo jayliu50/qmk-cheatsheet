@@ -8,7 +8,7 @@ section
 
     p Create an entry for each macro in an enum. Replace YOUR_MACRO_1, YOUR_MACRO_2, etc., below, with the names of your macros.
 
-    aside in keymap.c, above KEYMAP()
+    aside in keymap.c, before KEYMAP():
     pre
       code.language-c.
         // Macro Declarations
@@ -19,7 +19,7 @@ section
         };
   .block
     h3 Step 2: Define
-    aside in keymap.c, above KEYMAP()
+    aside in keymap.c, before KEYMAP():
     pre
       code.language-c.
         // Macro Definitions
@@ -51,7 +51,7 @@ section
         };
   .block
     h3 Step 3: Use
-    aside in keymap.c, in your call to KEYMAP()
+    aside in keymap.c, in the call to KEYMAP():
     pre
       code.language-c.
         M(YOUR_MACRO_1)

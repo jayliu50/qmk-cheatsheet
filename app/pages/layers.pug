@@ -7,7 +7,7 @@ section
     h3 Step 1: Declare
 
     p Create each layer as an entry in an enum. Replace YOUR_LAYER_1, YOUR_LAYER_2, etc., below, with names of your layers.
-    aside in keymap.c
+    aside in keymap.c:
     pre
       code.language-c.
         // Layer Declarations
@@ -20,10 +20,9 @@ section
     h3 Step 2: Define
 
     p Add the keycodes for each layer into the keymaps array, by calling KEYMAP() for each layer.
-    aside in keymap.c, in the keymaps array
+    aside in keymap.c, create your KEYMAPs:
     pre
       code.language-c.
-
         // Layer Definitions
         const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -89,10 +88,9 @@ section
     h3 Light LEDs according to layer
 
     p Create a function called matrix_scan_user, and add a case for each layer. Note, you will have to look up which function your keyboard calls to turn LEDs on/off, and insert them to the code, below.
-    aside in keymap.c
+    aside in keymap.c:
     pre
       code.language-c.
-
         // Runs constantly in the background, in a loop.
         void matrix_scan_user(void) {
 
