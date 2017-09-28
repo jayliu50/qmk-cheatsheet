@@ -10,16 +10,20 @@ Goals of this cheatsheet
 
 As some information may be incomplete, please submit pull requests.
 
-
 ## Things to do ##
 
 - add more topics (below)
+- update to new macro implementation
 
 ## Topics not (yet?) covered ##
 
-- custom functions
 - leader key
-- common config.h settings
+- tap dance, advanced function
+- unicode
+- custom functions
+- common config.h and rules.mk settings
+
+Contributions are welcome. Just let me know of your intent to write something, if it deals with one of the topics above.
 
 # Development #
 Here are the instructions for building this cheatsheet in a development environment.
@@ -56,29 +60,19 @@ bower install
 broccoli serve
 ```
 
-### Watch but don't serve ###
+Then hit `localhost:4200` to see your changes.
 
-The following code makes it so that broccoli will watch your code and push changes, but it doesn't open up a server. This is good for updating the `/dist` directory
-
-First, run this to install the tool
-
+### Build the site ###
 ```
-[sudo] npm install -g broccoli-timepiece
+npm run build
 ```
 
-Then run this to keep the `/dist` folder up to date
+If the above doesn't work, then do the following.
+
+Remove the `/docs` folder, then run the following:
 
 ```
-broccoli-timepiece dist
-```
-
-Changes will then be pushed out to the `/dist` folder.
-
-### Build the assets only ###
-Broccoli has the ability to build the assets without running a server
-
-```
-broccoli build [your-target-folder-name-here]
+broccoli build docs
 ```
 
 ## Known Issues with the Development Environment ##
