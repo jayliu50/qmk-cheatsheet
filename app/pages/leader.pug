@@ -1,7 +1,56 @@
 include ../components/mixins.pug
 
 section
-  +section-head('Leader Key', 'leader', 'https://docs.qmk.fm/leader_key.html')
+  +section-head('Leader Key', 'leader', 'https://docs.qmk.fm/feature_leader_key.html')
 
   .intro
-    p Coming soon
+    p Press a sequence of keys to trigger functionality, in the style of Vim.
+
+  .block
+    h3 Step 1: Setup
+
+    aside in keymap.c, before `matrix_scan_user`:
+    pre
+      code.language-c.
+        LEADER_EXTERNS();
+
+  .block
+    h3 Step 2: Define
+
+    aside in keymap.c, `matrix_scan_user` function (create function if it doesn't exist):
+    pre
+      code.language-c.
+        void matrix_scan_user(void) {
+            LEADER_DICTIONARY() {
+                leading = false;
+                leader_end();
+
+                // for single key sequences
+                SEQ_ONE_KEY(KC_XXXX) {
+                    // INSERT CODE HERE: anything you can do in a macro https://docs.qmk.fm/macros.html
+                }
+
+                // for two-key sequences
+                SEQ_TWO_KEYS(KC_XXXX, KC_YYYY) {
+                    // INSERT CODE HERE: anything you can do in a macro https://docs.qmk.fm/macros.html
+                }
+
+                // for three-key sequences
+                SEQ_THREE_KEYS(KC_XXXX, KC_YYYY, KC_ZZZZ) {
+                    // INSERT CODE HERE: anything you can do in a macro https://docs.qmk.fm/macros.html
+                }
+
+                // ..., the rest of your Leader Key definitions.
+            }
+        }
+  .block
+    h3 Step 3: Use
+
+    p Tap the `KC_LEAD` followed by the sequence of keys, to access your functionality.
+
+    aside in keymap.c, in your KEYMAP():
+    pre
+      code.language-c.
+        KC_LEAD
+
+
