@@ -9,7 +9,7 @@ section
   .block
     h3 Step 1: Setup
 
-    aside include this snippet in keymap.c:
+    aside in keymap.c:
     pre
       code.language-c.
         enum planck_keycodes {
@@ -31,6 +31,17 @@ section
 
         #include "dynamic_macro.h"`
 
+    aside in keymap.c, in `process_record_user` function (create function if it doesn't exist):
+    pre
+      code.language-c.
+        bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+            if (!process_record_dynamic_macro(keycode, record)) {
+                return false;
+            }
+            return true;
+        }
+
+
   .block
     h3 Step 2: Use
     aside in keymap.c, in your KEYMAP():
@@ -44,28 +55,28 @@ section
           pre
             code.language-c.
               DYN_REC_START1
-        td start recording the macro 1
+        td Start recording Macro 1
       tr
         td
           pre
             code.language-c.
               DYN_REC_START2
-        td start recording the macro 2
-      tr
-        td
-          pre
-            code.language-c.
-              DYN_MACRO_PLAY1
-        td replay the macro 1
-      tr
-        td
-          pre
-            code.language-c.
-              DYN_MACRO_PLAY2
-        td replay the macro 2
+        td Start recording Macro 2
       tr
         td
           pre
             code.language-c.
               DYN_REC_STOP
-        td finish the macro that is currently being recorded.
+        td Stop recording current Macro
+      tr
+        td
+          pre
+            code.language-c.
+              DYN_MACRO_PLAY1
+        td Replay Macro 1
+      tr
+        td
+          pre
+            code.language-c.
+              DYN_MACRO_PLAY2
+        td Replay Macro 2
