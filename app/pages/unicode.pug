@@ -1,0 +1,116 @@
+include ../components/mixins.pug
+
+section
+  +section-head('Unicode', 'unicode', 'https://docs.qmk.fm/unicode.html')
+
+  .intro
+    p Set up your keyboard to input Unicode, working through additional, required software.
+
+    p #[strong NOTE: The instructions here only apply for characters up to 0xFFFF.] For higher characters, please consult the #[a(href="https://docs.qmk.fm/unicode.html" target="_blank") official docs].
+
+  .block
+    //- h2 For characters up to 0xFFFF (see #[a(href="https://unicode-table.com/" target="_blank") Unicode Reference Table])
+    h3 Prerequisites: Configure OS and Software
+    h4 Windows
+    p Install #[a(href="https://github.com/samhocevar/wincompose" target="_blank") WinCompose].
+
+    h4 MacOS
+    p In System Preferences -&gt; Keyboard -&gt; Input Sources -&gt;, add a new layout. In the Others menu, select Unicode Hex Input. #[strong Note: Enable Unicode Hex Input each time you want to input Unicode.] Check the box for "Show Input menu in menu bar" to switch to this quickly.
+
+    h4 Linux
+    p Add the Unicode input method for your distro. #[strong Note: Enable Unicode Hex Input each time you want to input Unicode.] Should work almost anywhere on ibus enabled distros. Without ibus, this works under GTK apps, but rarely anywhere else.
+
+
+  .block
+    h3 Step 1: Setup
+
+    aside in rules.mk:
+    pre
+      code.language-c.
+        UNICODE_ENABLE = yes
+
+    aside in keymap.c, in function `matrix_init_user` (create function if it doesn't exist):
+
+    pre
+      code.language-c.
+        void matrix_init_user(void) {
+            set_unicode_input_mode(UC_XXXX); // REPLACE UC_XXXX with the Unicode Input Mode for your OS. See table below.
+        };
+
+    table
+      thead
+        tr
+          td Unicode Input Mode
+          td Description
+      tr
+        td
+          pre
+            code.language-c.
+              UC_WINC
+        td #[strong Windows] using #[strong WinCompose].
+      tr
+        td
+          pre
+            code.language-c.
+              UC_OSX
+        td #[strong MacOS] using #[strong Unicode Hex Input]. Can also send `UC_OSX_RALT` to use the Right Alt key.
+      tr
+        td
+          pre
+            code.language-c.
+              UC_LNX
+        td #[strong Linux] using #[strong Unicode input method].
+
+  .block
+    h3 Step 2: Define
+    aside in keymap.c, before KEYMAP() (using #[a(href="https://unicode-table.com/" target="_blank") Unicode Reference Table]):
+
+    pre
+      code.language-c.
+        #define STAR 0x2605 // ★
+        // ...,repeat for all characters
+
+  .block
+    h3 Step 3: Use
+    aside in keymap.c, in call to KEYMAP():
+    pre
+      code.language-c.
+        UC(STAR)
+
+  //- .block
+  //-   h2 Advanced Setup: support up to 0xFFFFFFFF (see #[a(href="https://unicode-table.com/" target="_blank") Unicode Reference Table])
+  //-   h3 Step 1: Setup
+
+  //-   aside in rules.mk:
+  //-   pre
+  //-     code.language-c.
+  //-       UNICODEMAP_ENABLE = yes
+
+  //- .block
+  //-   h3 Step 2: Declare
+  //-   aside in keymap.c, before KEYMAP():
+  //-   pre
+  //-     code.language-c.
+  //-       // Unicode Character Declarations
+  //-       enum {
+  //-           THINK = 1, // thinking face 🤔
+  //-           // ...,repeat for all characters
+  //-       }
+
+  //-   h3 Step 3: Define
+  //-   aside in keymap.c (using #[a(href="https://unicode-table.com/" target="_blank") Unicode Reference Table]):
+
+  //-   pre
+  //-     code.language-c.
+  //-       // Unicode Character Definitions
+  //-       const uint32_t PROGMEM unicode_map[] = {
+  //-         [THINK] = 0x1F914,
+  //-         // ..., repeat for all characters
+  //-       };
+
+  //- .block
+  //-   h3 Step 4: Use
+  //-   aside in keymap.c, in call to KEYMAP():
+  //-   pre
+  //-     code.language-c.
+  //-       X(THINK)
