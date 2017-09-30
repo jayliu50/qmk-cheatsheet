@@ -17,9 +17,8 @@ As some information may be incomplete, please submit pull requests.
 
 ## Topics not (yet?) covered ##
 
-- leader key
-- tap dance, advanced function
-- unicode
+- tap dance, advanced functions
+- unicode, advanced
 - custom functions
 - common config.h and rules.mk settings
 
