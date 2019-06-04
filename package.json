@@ -28,6 +28,6 @@
     "prettier": "^1.5.3"
   },
   "scripts": {
-    "build": "rm -r docs || broccoli build docs"
+    "build": "rm -r docs & broccoli build docs"
   }
 }
