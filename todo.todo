@@ -1,0 +1,46 @@
+ ✔ how to add a layer @done (17-07-15 11:35)
+   ✔ toggle led on layer @done (17-07-15 11:35)
+ ☐ custom functions F
+ ☐ dynamic macro _DYN
+ ☐ mouse keys
+ ☐ links
+   ☐ Documentation https://docs.qmk.fm/
+ ☐ leader key https://docs.qmk.fm/leader_key.html
+ ☐ macros https://docs.qmk.fm/macros.html
+ ☐ Dynamic macros https://docs.qmk.fm/dynamic_macros.html
+ ☐ tap dance https://docs.qmk.fm/tap_dance.html
+ ☐ mouse keys https://docs.qmk.fm/mouse_keys.html
+ ✔ layer manipulation https://docs.qmk.fm/key_functions.html @done (17-07-15 12:27)
+   ✔ MO momentary @done (17-07-15 12:28)
+   ✔ LT held = go to layer, tap = kc @done (17-07-15 12:28)
+   ✔ TG toggles layer on or off @done (17-07-15 12:28)
+   ✔ TO goes to layer (either up or down the stack) @done (17-07-15 12:28)
+   ✔ TT held down = layer active, tap = toggles on/off @done (17-07-15 12:28)
+   ✔ osl @done (17-07-15 12:28)
+ ✔ modifiers (list) https://docs.qmk.fm/key_functions.html @done (17-07-15 12:28)
+   ✔ MT held = modifier, tap = kc @done (17-07-15 12:28)
+     ✔ has shortcut aliases @done (17-07-15 12:28)
+   ✔ osm one-shot modifier @done (17-07-15 12:28)
+ ✘ unicode @cancelled (17-07-15 08:19)
+ ☐ keymap overview https://docs.qmk.fm/keymap.html
+ ☐ keycodes
+   ☐ // see tmk_core/common/keycode.h
+   ☐ // see quantum/quantum_keycodes.h
+   ☐ more : https://docs.qmk.fm/faq_keymap.html
+ ☐ config.h file: https://docs.qmk.fm/config_options.html
+ ☐ plover setup
+ ✘ permissive hold @cancelled (17-07-15 08:07)
+ ☐ colemak / dvorak setups
+   ☐ different header
+   ☐ sendstring
+ ☐ backlight
+
+
+ For each feature:
+  ☐ description
+  ☐ setup
+    ☐ makefile
+    ☐ config.h
+    ☐ keymap.c header
+  ☐ use in keymap matrix?
+  ☐ notes (restrictions, etc)
