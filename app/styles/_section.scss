@@ -26,6 +26,13 @@ section {
     a {
       color: $color-white;
     }
+
+    .links {
+      li {
+        margin-left: 1em;
+        display: inline-block;
+      }
+    }
   }
 
   .intro {

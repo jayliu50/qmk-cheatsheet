@@ -1,7 +1,7 @@
 include ../components/mixins.pug
 
 section
-  +section-head('Tap Dance', 'tap-dance', 'https://docs.qmk.fm/tap_dance.html')
+  +section-head('Tap Dance', 'tap-dance', 'https://docs.qmk.fm/#/feature_tap_dance')
 
   .intro
     p Send different key codes depending on how many times key is tapped. Tap key once does one thing, tap twice does another thing, etc.
@@ -42,9 +42,9 @@ section
         // Tap Dance Definitions
         qk_tap_dance_action_t tap_dance_actions[] = {
             // simple tap dance
-            [YOUR_TAPDANCE_1] = ACTION_TAP_DANCE_DOUBLE(KC_XXXX, KC_YYYY), // replace with your keyco.des
+            [YOUR_TAPDANCE_1] = ACTION_TAP_DANCE_DOUBLE(KC_XXXX, KC_YYYY), // replace with your keycodes. BASIC codes only, no custom codes.
 
-            // complex tap dance function (to specify what happens when key is pressed 3+ times, for example). See https://docs.qmk.fm/tap_dance.html for how to define
+            // complex tap dance function (to specify what happens when key is pressed 3+ times, for example). See full docs for how to define
             [YOUR_TAPDANCE_2] = ACTION_TAP_DANCE_FN(your_function_name),
         };
 

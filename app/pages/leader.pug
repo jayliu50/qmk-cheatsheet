@@ -1,7 +1,7 @@
 include ../components/mixins.pug
 
 section
-  +section-head('Leader Key', 'leader', 'https://docs.qmk.fm/feature_leader_key.html')
+  +section-head('Leader Key', 'leader', 'https://docs.qmk.fm/#/feature_leader_key')
 
   .intro
     p Press a sequence of keys to trigger functionality, in the style of Vim.
@@ -32,17 +32,17 @@ section
 
                 // for single key sequences
                 SEQ_ONE_KEY(KC_XXXX) {
-                    // INSERT CODE HERE: anything you can do in a macro https://docs.qmk.fm/macros.html
+                    // INSERT CODE HERE: anything you can do in a macro
                 }
 
                 // for two-key sequences
                 SEQ_TWO_KEYS(KC_XXXX, KC_YYYY) {
-                    // INSERT CODE HERE: anything you can do in a macro https://docs.qmk.fm/macros.html
+                    // INSERT CODE HERE: anything you can do in a macro
                 }
 
                 // for three-key sequences
                 SEQ_THREE_KEYS(KC_XXXX, KC_YYYY, KC_ZZZZ) {
-                    // INSERT CODE HERE: anything you can do in a macro https://docs.qmk.fm/macros.html
+                    // INSERT CODE HERE: anything you can do in a macro
                 }
 
                 // ..., the rest of your Leader Key definitions.
@@ -58,4 +58,8 @@ section
       code.language-c.
         KC_LEAD
 
+  .block
+    h3 See also
+    a(href="#macros")
+        span Macros
 

@@ -2,5 +2,10 @@ mixin section-head(label, slug, link)
   .section-head
     a(name!=slug)
     h2= label
-    a(href!=link target="_blank")
-      span.no-print Full Docs
+    ul.links
+      li
+        a(href='#top')
+          span.no-print Back to Top
+      li
+        a(href!=link target="_blank")
+          span.no-print See full docs

@@ -1,7 +1,7 @@
 include ../components/mixins.pug
 
 section
-  +section-head('Macros', 'macros', 'https://docs.qmk.fm/macros.html')
+  +section-head('Macros', 'macros', 'https://docs.qmk.fm/#/feature_macros')
 
   .block
     h3 Step 1: Declare
@@ -38,9 +38,7 @@ section
             // for more complex macros (want to add modifiers, etc.)
             case YOUR_MACRO_1: {
               if (recond->event.pressed) {
-                return MACRO(
-                  // INSERT CODE HERE for your macro. See https://docs.qmk.fm/macros.html
-                );
+                  // INSERT CODE HERE for your macro. See full documentation for details and functions
               }
             }
 

@@ -25,6 +25,9 @@ As some information may be incomplete, please submit pull requests.
 Contributions are welcome. Just let me know of your intent to write something, if it deals with one of the topics above.
 
 # Development #
+
+******NOTE: due to the age of the dependencies, please use Node v7 or _earlier_.******
+
 Here are the instructions for building this cheatsheet in a development environment.
 
 Oh, and I would NOT recommend this to be run on Windows, not until broccoli and all its dependencies are more fully supported. I have tried this on OSX and Ubuntu Linux and those seem to work fine.
